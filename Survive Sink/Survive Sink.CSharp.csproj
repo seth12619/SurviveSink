@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\CameraAutoRotate.cs" />
+    <Compile Include="Assets\Tilting.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TSF\Shaders\TSF.shader" />
