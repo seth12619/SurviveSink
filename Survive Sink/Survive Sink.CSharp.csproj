@@ -67,6 +67,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\CameraAutoRotate.cs" />
+    <Compile Include="Assets\DoorSystem\Debugger\Yurowm\DebugPanel\DebugPanel.cs" />
+    <Compile Include="Assets\DoorSystem\Debugger\Yurowm\DebugPanel\DebugPanelField.cs" />
+    <Compile Include="Assets\DoorSystem\Debugger\Yurowm\DebugPanel\DebugPanelViewport.cs" />
+    <Compile Include="Assets\DoorSystem\Scripts\Detection.cs" />
+    <Compile Include="Assets\DoorSystem\Scripts\Door.cs" />
+    <Compile Include="Assets\DoorSystem\Scripts\MouseLook.cs" />
+    <Compile Include="Assets\DoorSystem\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Tilting.cs" />
   </ItemGroup>
   <ItemGroup>
