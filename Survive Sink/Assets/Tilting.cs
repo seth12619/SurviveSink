@@ -32,21 +32,59 @@ public class Tilting : MonoBehaviour {
         decideAction();
 	}
 
+    /**
+     *  Default DecideAction behavior for testing.
+     */
     void decideAction() {
-        if (currIncrements == INCREMENT_MIN)
+        if (currIncrements == getINCREMENT_MIN())
         {
-            currIncrements = (int)(Random.Range(0.0f, 1.0f) * INCREMENT_RANGE) + INCREMENT_START;
-            bool turn = Random.Range(0.0f, 1.0f) > PERCENTAGE_TURN;
-            if (turn) {
-                turningRight *= -1;
-            }
-            targetXDeg = Random.Range(0.0f, X_DEG_RANGE)*turningRight;
-            targetZDeg = Random.Range(-Z_DEG_RANGE, Z_DEG_RANGE);
+            chooseRandTilt();
         }
-        moveToAngle(targetXDeg, targetZDeg, currIncrements);
+        currIncrements = moveToAngle(targetXDeg, targetZDeg, currIncrements);
     }
 
-    bool moveToAngle (float xDeg, float zDeg, int increments) {
+    /**
+     *  Chooses the random tilt
+     */
+    void chooseRandTilt()
+    {
+        int increments = (int)(Random.Range(0.0f, 1.0f) * getINCREMENT_RANGE()) + getINCREMENT_START();
+        bool turn = Random.Range(0.0f, 1.0f) > getPERCENTAGE_TURN();
+        if (turn)
+        {
+            turningRight *= -1;
+        }
+        float xDeg = Random.Range(0.0f, getX_DEG_RANGE()) * turningRight;
+        float zDeg = Random.Range(-getZ_DEG_RANGE(), getZ_DEG_RANGE());
+        refactorMovement(xDeg, zDeg, increments);
+    }
+
+    //Fundamental Functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    /**
+     *  Changes movement to move to new location with the given increments
+     *
+     *  @param tXDeg - float, XDeg to go to.
+     *  @param tZDeg - float, ZDeg to go to.
+     *  @param incStart - int, sets the increments + the mandatory minimum INCREMENT_START
+     */
+    void refactorMovement(float tXDeg, float tZDeg, int incStart)
+    {
+        currIncrements = incStart + getINCREMENT_START();
+        targetXDeg = tXDeg;
+        targetZDeg = tZDeg;
+    }
+
+    /**
+     *  Does one frame to move 1/increments to the angle given by xDeg, zDeg 
+     *  
+     *  @param xDeg - float
+     *  @param zDeg - float
+     *  @param increments - int
+     *
+     *  @return the increments after moving to the new angle.
+     */
+    int moveToAngle (float xDeg, float zDeg, int increments) {
         float tempX = xDeg - currXDeg;
         tempX = tempX / increments;
 
@@ -58,17 +96,55 @@ public class Tilting : MonoBehaviour {
 
         currXDeg += tempX;
         currZDeg += tempZ;
-        currIncrements = increments - 1;
-        Debug.Log(currIncrements);
+
+        /*Debug.Log(currIncrements);
         Debug.Log("XDeg: " + currXDeg + ", ZDeg: " + currZDeg);
         Debug.Log("XDeg: " + xDeg + ", ZDeg: " + zDeg);
-        Debug.Log(Time.deltaTime);
+        Debug.Log(Time.deltaTime);*/
 
         transform.Rotate(0, 0, currZDeg);
         transform.Rotate(currXDeg, 0, 0);
-        
-        if(currIncrements==0)
-            return true;
-        return false;
+
+        return increments - 1; 
+    }
+
+    /**
+     *  Moves to angle given by the private stored values
+     */
+    int autoMoveToAngle()
+    {
+        return moveToAngle(targetXDeg, targetZDeg, currIncrements);
+    }
+
+    //GETTER METHODS FOR CONSTANTS ----------------------------------------------------------------------
+
+    double getPERCENTAGE_TURN()
+    {
+        return PERCENTAGE_TURN;
+    }
+
+    int getINCREMENT_RANGE()
+    {
+        return INCREMENT_RANGE;
+    }
+
+    int getINCREMENT_START()
+    {
+        return INCREMENT_START;
+    }
+
+    float getZ_DEG_RANGE()
+    {
+        return Z_DEG_RANGE;
+    }
+
+    float getX_DEG_RANGE()
+    {
+        return X_DEG_RANGE;
+    }
+
+    int getINCREMENT_MIN()
+    {
+        return INCREMENT_MIN;
     }
 }
