@@ -11,8 +11,8 @@ public class Tilting : MonoBehaviour {
     private int currIncrements;
 
     private static double PERCENTAGE_TURN = 0.85;
-    private static int INCREMENT_RANGE = 1000;
-    private static int INCREMENT_START = 600;
+    private static int INCREMENT_RANGE = 500;
+    private static int INCREMENT_START = 250;
     private static float Z_DEG_RANGE = 10;
     private static float X_DEG_RANGE = 25;
     private static int INCREMENT_MIN = 0;
@@ -35,18 +35,25 @@ public class Tilting : MonoBehaviour {
     /**
      *  Default DecideAction behavior for testing.
      */
-    void decideAction() {
+    public virtual void decideAction() {
+        randomMovement();
+    }
+
+    public int randomMovement()
+    {
         if (currIncrements == getINCREMENT_MIN())
         {
             chooseRandTilt();
         }
         currIncrements = moveToAngle(targetXDeg, targetZDeg, currIncrements);
+
+        return currIncrements;
     }
 
     /**
      *  Chooses the random tilt
      */
-    void chooseRandTilt()
+    public void chooseRandTilt()
     {
         int increments = (int)(Random.Range(0.0f, 1.0f) * getINCREMENT_RANGE()) + getINCREMENT_START();
         bool turn = Random.Range(0.0f, 1.0f) > getPERCENTAGE_TURN();
@@ -68,7 +75,7 @@ public class Tilting : MonoBehaviour {
      *  @param tZDeg - float, ZDeg to go to.
      *  @param incStart - int, sets the increments + the mandatory minimum INCREMENT_START
      */
-    void refactorMovement(float tXDeg, float tZDeg, int incStart)
+    public void refactorMovement(float tXDeg, float tZDeg, int incStart)
     {
         currIncrements = incStart + getINCREMENT_START();
         targetXDeg = tXDeg;
@@ -84,7 +91,7 @@ public class Tilting : MonoBehaviour {
      *
      *  @return the increments after moving to the new angle.
      */
-    int moveToAngle (float xDeg, float zDeg, int increments) {
+    public int moveToAngle (float xDeg, float zDeg, int increments) {
         float tempX = xDeg - currXDeg;
         tempX = tempX / increments;
 
@@ -111,7 +118,7 @@ public class Tilting : MonoBehaviour {
     /**
      *  Moves to angle given by the private stored values
      */
-    int autoMoveToAngle()
+    public int autoMoveToAngle()
     {
         return moveToAngle(targetXDeg, targetZDeg, currIncrements);
     }

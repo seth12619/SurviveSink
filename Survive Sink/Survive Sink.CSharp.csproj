@@ -75,7 +75,8 @@
     <Compile Include="Assets\DoorSystem\Scripts\MouseLook.cs" />
     <Compile Include="Assets\DoorSystem\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\PlayerController.cs" />
-    <Compile Include="Assets\Tilting.cs" />
+    <Compile Include="Assets\Tilting\Tilting.cs" />
+    <Compile Include="Assets\Tilting\WaitTilting.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TSF\Shaders\TSF.shader" />
