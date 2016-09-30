@@ -73,9 +73,15 @@
     <Compile Include="Assets\DoorSystem\Scripts\Door.cs" />
     <Compile Include="Assets\DoorSystem\Scripts\MouseLook.cs" />
     <Compile Include="Assets\DoorSystem\Scripts\PlayerMovement.cs" />
+<<<<<<< HEAD
     <Compile Include="Assets\Scripts\CameraAutoRotate.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Tilting.cs" />
+=======
+    <Compile Include="Assets\PlayerController.cs" />
+    <Compile Include="Assets\Tilting\Tilting.cs" />
+    <Compile Include="Assets\Tilting\WaitTilting.cs" />
+>>>>>>> refs/remotes/origin/master
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TSF\Shaders\TSF.shader" />
