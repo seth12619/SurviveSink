@@ -81,6 +81,9 @@
     <Compile Include="Assets\PlayerController.cs" />
     <Compile Include="Assets\Tilting\Tilting.cs" />
     <Compile Include="Assets\Tilting\WaitTilting.cs" />
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/master
+=======
 >>>>>>> refs/remotes/origin/master
   </ItemGroup>
   <ItemGroup>
