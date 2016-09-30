@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WaitTilting : Tilting {
+public class WaitTilting : TiltingA {
     private static int MODIFIER = 1;
     private static int WAIT_TIME_RANGE = 2000 / MODIFIER;
     private static int WAIT_TIME_FLOOR = 1000 / MODIFIER;
