@@ -4,7 +4,7 @@
 ////////////////////////////////////
 
 using UnityEngine;
-using UnityEditor;
+//using UnityEditor;
 using System.Collections;
 
 public class Door : MonoBehaviour {
@@ -135,11 +135,11 @@ public class Door : MonoBehaviour {
 		//cube.GetComponent<Renderer>().material.color = Color.black;
 		
 		// USER ERROR CODES
-		if (Mathf.Abs(StartAngle) + Mathf.Abs(EndAngle) == 180 || Mathf.Abs(StartAngle) + Mathf.Abs(EndAngle) > 180)
-		{
-			UnityEditor.EditorUtility.DisplayDialog ("Error 001","Difference between StartAngle and EndAngle can't be >=180", "Ok", "");
-			UnityEditor.EditorApplication.isPlaying = false;
-		}
+		//if (Mathf.Abs(StartAngle) + Mathf.Abs(EndAngle) == 180 || Mathf.Abs(StartAngle) + Mathf.Abs(EndAngle) > 180)
+		//{
+		//	UnityEditor.EditorUtility.DisplayDialog ("Error 001","Difference between StartAngle and EndAngle can't be >=180", "Ok", "");
+		//	UnityEditor.EditorApplication.isPlaying = false;
+		//}
 
 		// Angle defining.
 		// Set 'StartRot' to be rotation when door is not yet moved.
