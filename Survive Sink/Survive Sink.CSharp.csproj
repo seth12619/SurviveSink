@@ -64,12 +64,8 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="XInputDotNetPure">
-      <HintPath>Assets\Plugins\x86_64\XInputDotNetPure.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CameraController.cs" />
     <Compile Include="Assets\DoorSystem\Debugger\Yurowm\DebugPanel\DebugPanel.cs" />
     <Compile Include="Assets\DoorSystem\Debugger\Yurowm\DebugPanel\DebugPanelField.cs" />
     <Compile Include="Assets\DoorSystem\Debugger\Yurowm\DebugPanel\DebugPanelViewport.cs" />
@@ -77,16 +73,12 @@
     <Compile Include="Assets\DoorSystem\Scripts\Door.cs" />
     <Compile Include="Assets\DoorSystem\Scripts\MouseLook.cs" />
     <Compile Include="Assets\DoorSystem\Scripts\PlayerMovement.cs" />
-    <Compile Include="Assets\Scripts\CameraAutoRotate.cs" />
-    <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Tilting\Tilting.cs" />
     <Compile Include="Assets\Scripts\Tilting\WaitTilting.cs" />
-    <Compile Include="Assets\XInputDotNet\Examples\XInputTestCS.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TSF\Shaders\TSF.shader" />
     <None Include="Assets\TSF\Shaders\TSFOutline.shader" />
-    <None Include="Assets\XInputDotNet\MITLicense.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

@@ -91,9 +91,6 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>Library\UnityAssemblies\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
-    <Reference Include="XInputDotNetPure">
-      <HintPath>Assets\Plugins\x86_64\XInputDotNetPure.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Survive Sink.CSharp.csproj">
@@ -107,7 +104,6 @@
   <ItemGroup>
     <None Include="Assets\TSF\Shaders\TSF.shader" />
     <None Include="Assets\TSF\Shaders\TSFOutline.shader" />
-    <None Include="Assets\XInputDotNet\MITLicense.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
