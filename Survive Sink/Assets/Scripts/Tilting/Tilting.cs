@@ -2,7 +2,7 @@
 using System.Collections;
 
 
-public class TiltingA : MonoBehaviour {
+public class Tilting : MonoBehaviour {
     private float currXDeg;
     private float currZDeg;
     private float targetXDeg;

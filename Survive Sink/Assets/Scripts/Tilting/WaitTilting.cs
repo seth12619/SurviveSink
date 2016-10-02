@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WaitTilting : TiltingA {
-    private static int MODIFIER = 1;
-    private static int WAIT_TIME_RANGE = 2000 / MODIFIER;
-    private static int WAIT_TIME_FLOOR = 1000 / MODIFIER;
-    private static int WAIT_TIME_BUFFER = 1000 / MODIFIER;
+public class WaitTilting : Tilting {
+    private static double MODIFIER = 0.8;
+    private static int WAIT_TIME_RANGE = (int) (2000 / MODIFIER);
+    private static int WAIT_TIME_FLOOR = (int) (1000 / MODIFIER);
+    private static int WAIT_TIME_BUFFER = (int) (1000 / MODIFIER);
 
     private int waitTime = 0;
     private int currentMaxWaitTime = 0;
