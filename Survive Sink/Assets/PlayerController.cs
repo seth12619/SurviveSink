@@ -3,18 +3,19 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
-	public float speed = 6.0f;
+	public float speed = 2.0f;
 	public float maxChange = 10.0f;
 	public float gravity = 10.0f;
 	public float frontInput;
 	public float sideInput;
 	public bool jumpInput;
-	public bool canJmp;
+	public bool canJmp = true;
 	public float jumpHeight = 0.5f;
 	public bool grounded = false;
 
 	public GameObject player;
     public Rigidbody rb;
+	public 
 
 	// Use this for initialization
 	void Start () {
@@ -64,5 +65,8 @@ public class PlayerController : MonoBehaviour {
 	void OnCollisionStay()
 	{
 		grounded = true;
+	}
+
+	void CalculateBounds(){
 	}
 }
