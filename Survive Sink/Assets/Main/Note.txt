@@ -1,0 +1,6 @@
+From 5th to 4th
+= difference is -1.2
+ -.1 Floor 5th
+ -.1 Roof 4th
+ - The Space is the 1
+Steps (each step is 0.1) needed: 12 (including the step that is aligned with 5th's floor
