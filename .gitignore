@@ -1,4 +1,9 @@
-# Windows image file caches
+# Custom Files
+*.csproj
+Survive Sink.sln
+*.info
+
+ Windows image file caches
 Thumbs.db
 ehthumbs.db
 

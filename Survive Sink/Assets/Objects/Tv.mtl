@@ -1,0 +1,40 @@
+# Blender MTL File: 'Tv.blend'
+# Material Count: 4
+
+newmtl Black
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.007905 0.007527 0.008076
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\Users\LichWazer\Desktop\BlenderFolder\Mercy.png
+
+newmtl Black_NONE
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.007905 0.007527 0.008076
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl Material
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.007215 0.007215 0.007215
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl Screen
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\Users\LichWazer\Desktop\BlenderFolder\Mercy.png
