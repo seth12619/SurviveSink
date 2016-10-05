@@ -79,6 +79,8 @@
     <Compile Include="Assets\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Tilting\Tilting.cs" />
     <Compile Include="Assets\Scripts\Tilting\WaitTilting.cs" />
+    <Compile Include="Assets\TestItemRoom\ItemDetection.cs" />
+    <Compile Include="Assets\TestItemRoom\ItemPickup.cs" />
     <Compile Include="Assets\XInputDotNet\Examples\XInputTestCS.cs" />
   </ItemGroup>
   <ItemGroup>

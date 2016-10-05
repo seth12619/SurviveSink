@@ -2,10 +2,13 @@
 using System.Collections;
 
 public class WaitTilting : Tilting {
-    private static double MODIFIER = 0.8;
-    private static int WAIT_TIME_RANGE = (int) (2000 / MODIFIER);
-    private static int WAIT_TIME_FLOOR = (int) (1000 / MODIFIER);
-    private static int WAIT_TIME_BUFFER = (int) (1000 / MODIFIER);
+    [Header("Wait Settings")]
+    [Tooltip("Modifier for wait time.")]
+    public double MODIFIER = 0.8;
+
+    private int WAIT_TIME_RANGE = (int) (2000);
+    private int WAIT_TIME_FLOOR = (int) (1000);
+    private int WAIT_TIME_BUFFER = (int) (1000);
 
     private int waitTime = 0;
     private int currentMaxWaitTime = 0;
@@ -15,7 +18,7 @@ public class WaitTilting : Tilting {
         if (waitTime > 0)
         {
             waitTime--;
-            base.moveToAngle(0,0,WAIT_TIME_RANGE + WAIT_TIME_FLOOR + WAIT_TIME_BUFFER - currentMaxWaitTime + waitTime);
+            base.moveToAngle(0,0,getWAIT_TIME_RANGE() + getWAIT_TIME_FLOOR() + getWAIT_TIME_BUFFER() - currentMaxWaitTime + waitTime);
         }
         else
         {
@@ -25,6 +28,21 @@ public class WaitTilting : Tilting {
                 setRandomWaitTime();
             };
         }
+    }
+
+    int getWAIT_TIME_RANGE()
+    {
+        return (int) (WAIT_TIME_RANGE / MODIFIER);
+    }
+
+    int getWAIT_TIME_FLOOR()
+    {
+        return (int)(WAIT_TIME_FLOOR / MODIFIER);
+    }
+
+    int getWAIT_TIME_BUFFER()
+    {
+        return (int)(WAIT_TIME_BUFFER / MODIFIER);
     }
 
     void setWaitTime(int x)
