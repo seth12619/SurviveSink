@@ -45,7 +45,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\CameraAutoRotate.cs" />
      <Compile Include="Assets\DoorSystem\Debugger\Yurowm\DebugPanel\DebugPanel.cs" />
      <Compile Include="Assets\DoorSystem\Debugger\Yurowm\DebugPanel\DebugPanelField.cs" />
      <Compile Include="Assets\DoorSystem\Debugger\Yurowm\DebugPanel\DebugPanelViewport.cs" />
@@ -54,13 +53,14 @@
      <Compile Include="Assets\DoorSystem\Scripts\MouseLook.cs" />
      <Compile Include="Assets\DoorSystem\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\PlayerController.cs" />
-     <Compile Include="Assets\Tilting.cs" />
-     <Compile Include="Assets\Tilting\TiltingA.cs" />
-     <Compile Include="Assets\Tilting\WaitTilting.cs" />
+     <Compile Include="Assets\PlayerGrit.cs" />
+     <Compile Include="Assets\Scripts\Tilting\Tilting.cs" />
+     <Compile Include="Assets\Scripts\Tilting\WaitTilting.cs" />
      <Compile Include="Assets\XInputDotNet\Examples\XInputTestCS.cs" />
      <None Include="Assets\XInputDotNet\MITLicense.txt" />
      <None Include="Assets\TSF\Shaders\TSFOutline.shader" />
      <None Include="Assets\TSF\Shaders\TSF.shader" />
+     <None Include="Assets\Main\Note.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
