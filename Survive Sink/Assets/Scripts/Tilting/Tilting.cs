@@ -10,11 +10,16 @@ public class Tilting : MonoBehaviour {
     private int turningRight;
     private int currIncrements;
 
-    private static double PERCENTAGE_TURN = 0.85;
+    [Header("Tilt Settings")]
+    [Tooltip("Percentage to tilt to the the other side.")]
+    public double PERCENTAGE_TURN = 0.85;
+    [Tooltip("Tilt range in the X coordinates. (Degrees)")]
+    public float X_DEG_RANGE = 25;
+    [Tooltip("Tilt range in the Z coordinates. (Degrees)")]
+    public float Z_DEG_RANGE = 10;
+
     private static int INCREMENT_RANGE = 500;
     private static int INCREMENT_START = 250;
-    private static float Z_DEG_RANGE = 10;
-    private static float X_DEG_RANGE = 25;
     private static int INCREMENT_MIN = 0;
 
 	// Use this for initialization
