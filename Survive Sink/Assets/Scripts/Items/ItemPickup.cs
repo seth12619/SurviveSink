@@ -6,7 +6,9 @@ public class ItemPickup : MonoBehaviour
 
     [Header("Pickup Settings")]
     [Tooltip("Scale of object when picked up. (Doesn't Work)")]
-    public float pickUpScale = 1;
+    public float pickUpScale = 0.25f;
+
+    [Header("Tilt Settings")]
     [Tooltip("Tilt of object in the X. (Degrees)")]
     public float X_DEG_Shift = 126;
     [Tooltip("Tilt of object in the Y. (Degrees)")]
@@ -14,15 +16,20 @@ public class ItemPickup : MonoBehaviour
     [Tooltip("Tilt of object in the Z. (Degrees)")]
     public float Z_DEG_Shift = -111;
 
+    [Header("Offset Settings")]
+    [Tooltip("Offset of object in the X when Picked up. (Degrees)")]
+    private float XShift = 0.3f;
+    [Tooltip("Offset of object in the Y when Picked up. (Degrees)")]
+    private float YShift = -0.1f;
+    [Tooltip("Offset of object in the Z when Picked up. (Degrees)")]
+    private float ZShift = 0.2f;
+
     private int pickupRectWidth = 250;
     private int rectXMargin = 20;
     private int rectYMargin = 20;
 
-    private float ZShift = 0.4f;
-    private float XShift = 0.3f;
-    private float YShift = 0.033f;
-
     private Rigidbody rigidbody;
+    private float rigidbodyMass;
 
     // 0 means player isn't holding item. -1 means left hand and 1 means right hand.
     private int nextToPlayer = 0;
@@ -31,6 +38,7 @@ public class ItemPickup : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
+        rigidbodyMass = rigidbody.mass;
     }
 
     // Update is called once per frame
@@ -44,12 +52,10 @@ public class ItemPickup : MonoBehaviour
             }
             else
             {
-                GameObject Player = GameObject.Find("Player");
                 GameObject Camera = GameObject.Find("Camera");
 
                 transform.rotation = Quaternion.Euler(X_DEG_Shift, Y_DEG_Shift * nextToPlayer, Z_DEG_Shift * nextToPlayer);
-                transform.position = Player.transform.position + Camera.transform.rotation*new Vector3(XShift * nextToPlayer, YShift, ZShift);
-                Debug.Log(transform.position);
+                transform.position = Camera.transform.position + Camera.transform.rotation*new Vector3(XShift * nextToPlayer * pickUpScale, YShift * pickUpScale, ZShift * pickUpScale);
 
                 transform.rotation = Camera.transform.rotation * transform.rotation;
             }
@@ -72,16 +78,17 @@ public class ItemPickup : MonoBehaviour
 
     void attachToPlayer()
     {
-        //transform.localScale *= pickUpScale;
-        rigidbody.isKinematic = true;
-        
+        transform.localScale *= pickUpScale;
     }
 
     public IEnumerator detachFromPlayer()
     {
-        //transform.localScale /= pickUpScale;
+        GameObject Camera = GameObject.Find("Camera");
+        //transform.position = Camera.transform.position + Quaternion.Euler(Camera.transform.rotation.x, 0, Camera.transform.rotation.z) 
+            //* new Vector3(XShift * nextToPlayer, 0, ZShift);
         nextToPlayer = 0;
-        rigidbody.isKinematic = false;
+        //rigidbody.isKinematic = false;
+        transform.localScale /= pickUpScale;
         yield return null;
     }
 

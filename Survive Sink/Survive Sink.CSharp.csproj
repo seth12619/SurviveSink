@@ -76,11 +76,14 @@
     <Compile Include="Assets\DoorSystem\Scripts\Door.cs" />
     <Compile Include="Assets\DoorSystem\Scripts\MouseLook.cs" />
     <Compile Include="Assets\DoorSystem\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Main\MainMenu.cs" />
+    <Compile Include="Assets\Main\MouseHover.cs" />
     <Compile Include="Assets\PlayerController.cs" />
+    <Compile Include="Assets\PlayerGrit.cs" />
+    <Compile Include="Assets\Scripts\Items\ItemDetection.cs" />
+    <Compile Include="Assets\Scripts\Items\ItemPickup.cs" />
     <Compile Include="Assets\Scripts\Tilting\Tilting.cs" />
     <Compile Include="Assets\Scripts\Tilting\WaitTilting.cs" />
-    <Compile Include="Assets\TestItemRoom\ItemDetection.cs" />
-    <Compile Include="Assets\TestItemRoom\ItemPickup.cs" />
     <Compile Include="Assets\XInputDotNet\Examples\XInputTestCS.cs" />
   </ItemGroup>
   <ItemGroup>

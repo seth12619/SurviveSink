@@ -124,7 +124,8 @@ public class Door : MonoBehaviour {
 
 		// Hinge positioning.
 		hinge.transform.position = HingePosCopy;
-		transform.parent = hinge.transform;
+        var oldParent = transform.parent;
+        transform.parent = hinge.transform;
 		hinge.transform.localEulerAngles = HingeRotCopy;
 		
 		// DEBUGGING
@@ -146,7 +147,9 @@ public class Door : MonoBehaviour {
 		StartRot = Quaternion.Euler (0, -StartAngle, 0);
 		// Set 'EndRot' to be the rotation when door is moved.
 		EndRot = Quaternion.Euler(0, -EndAngle, 0);
-	}
+
+        hinge.transform.parent = oldParent;
+    }
 
 	// UPDATE FUNCTION
 	void Update ()
@@ -159,23 +162,25 @@ public class Door : MonoBehaviour {
     {
 		if (n < TimesMoveable || TimesMoveable == 0)
 		{
-			if (hinge.transform.rotation == (State == 0 ? EndRot : StartRot))
+            GameObject Ship = GameObject.Find("Ship");
+            if (hinge.transform.rotation == (Ship != null ? Ship.transform.rotation : Quaternion.Euler(0, 0, 0)) * (State == 0 ? EndRot : StartRot))
 			{
 				// Change state from 1 to 0 and back (= change from Endrot to StartRot).
 				State ^= 1;
 			}
+            // Set 'finalRotation' to 'Endrot' when moving and to 'StartRot' when moving back.
+            Quaternion finalRotation = (Ship != null ? Ship.transform.rotation : Quaternion.Euler(0,0,0)) * ((State == 0) ? EndRot : StartRot);
+            Debug.Log(StartRot + " " + EndRot);
 
-			// Set 'finalRotation' to 'Endrot' when moving and to 'StartRot' when moving back.
-			Quaternion finalRotation = ((State == 0) ? EndRot : StartRot);
+            // Make the door rotate until it is fully opened/closed.
+            while (Mathf.Abs(Quaternion.Angle(finalRotation, hinge.transform.rotation)) > 0.01f)
+    	    {
+			    Running = true;
+                finalRotation = (Ship != null ? Ship.transform.rotation : Quaternion.Euler(0,0,0)) * ((State == 0) ? EndRot : StartRot);
+			    hinge.transform.rotation = Quaternion.Lerp (hinge.transform.rotation, finalRotation, Time.deltaTime * Speed);
 
-    	// Make the door rotate until it is fully opened/closed.
-    	while (Mathf.Abs(Quaternion.Angle(finalRotation, hinge.transform.rotation)) > 0.01f)
-    	{
-			Running = true;
-			hinge.transform.rotation = Quaternion.Lerp (hinge.transform.rotation, finalRotation, Time.deltaTime * Speed);
-
-      		yield return new WaitForEndOfFrame();
-    	}
+      		    yield return new WaitForEndOfFrame();
+    	    }
 
 			Running = false;
 
