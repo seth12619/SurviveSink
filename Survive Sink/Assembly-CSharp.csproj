@@ -52,13 +52,19 @@
      <Compile Include="Assets\DoorSystem\Scripts\Door.cs" />
      <Compile Include="Assets\DoorSystem\Scripts\MouseLook.cs" />
      <Compile Include="Assets\DoorSystem\Scripts\PlayerMovement.cs" />
+     <Compile Include="Assets\Main\MainMenu.cs" />
+     <Compile Include="Assets\Main\MouseHover.cs" />
      <Compile Include="Assets\PlayerController.cs" />
      <Compile Include="Assets\PlayerGrit.cs" />
+     <Compile Include="Assets\Scripts\Items\ItemDetection.cs" />
+     <Compile Include="Assets\Scripts\Items\ItemPickup.cs" />
      <Compile Include="Assets\Scripts\Tilting\Tilting.cs" />
      <Compile Include="Assets\Scripts\Tilting\WaitTilting.cs" />
      <Compile Include="Assets\XInputDotNet\Examples\XInputTestCS.cs" />
+     <None Include="Assets\Suite\StandardShader.shader" />
      <None Include="Assets\XInputDotNet\MITLicense.txt" />
      <None Include="Assets\TSF\Shaders\TSFOutline.shader" />
+     <None Include="Assets\Materials\Outlined-Silhouette Only.shader" />
      <None Include="Assets\TSF\Shaders\TSF.shader" />
      <None Include="Assets\Main\Note.txt" />
  <Reference Include="UnityEngine.UI">
@@ -71,7 +77,7 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="XInputDotNetPure">
- <HintPath>C:/Users/LenovoX230/Desktop/School/College/Fourth Year/Thesis Stuff/Repositories/SurviveSink/Survive Sink/Assets/Plugins/x86_64/XInputDotNetPure.dll</HintPath>
+ <HintPath>C:/Users/Set/Desktop/Desktop/School/CS/4th yr/THESIS/Survive Sink/Assets/Plugins/x86_64/XInputDotNetPure.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -14,8 +14,9 @@ public class MainMenu : MonoBehaviour {
 
 	void OnMouseUp() {
 		if (start) {
+
 			SceneManager.LoadScene("Main", LoadSceneMode.Single);
-			GetComponent<Renderer>().material.color=Color.cyan;
+
 		}
 		if (quit) {
 			Application.Quit();
