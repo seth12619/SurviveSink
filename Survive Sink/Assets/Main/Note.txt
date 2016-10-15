@@ -4,3 +4,13 @@ From 5th to 4th
  -.1 Roof 4th
  - The Space is the 1
 Steps (each step is 0.1) needed: 12 (including the step that is aligned with 5th's floor
+
+How to play movie:
+
+i think the best answer for that is Handheld.PlayFullScreenMovie(VideoPath);
+
+Make a Folder Named StreamingAssets inside of Assets Folder and Place your video in that folder. eg. That Video's name is Test.mp4
+
+now all you have to do is to Write this Code
+
+Handheld.PlayFullScreenMovie("Test.mp4");
