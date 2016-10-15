@@ -60,6 +60,13 @@ public class ItemPickup : MonoBehaviour
                 transform.rotation = Camera.transform.rotation * transform.rotation;
             }
         }
+        else
+        {
+            if (rigidbody.IsSleeping())
+            {
+                rigidbody.WakeUp();
+            }
+        }
     }
 
     public IEnumerator attachToPlayerRight()
