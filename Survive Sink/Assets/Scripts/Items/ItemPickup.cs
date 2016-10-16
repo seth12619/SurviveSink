@@ -78,7 +78,6 @@ public class ItemPickup : MonoBehaviour
 
     void attachToPlayer()
     {
-        rigidbody.constraints = RigidbodyConstraints.None;
         transform.localScale *= pickUpScale;
     }
 
