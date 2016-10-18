@@ -80,14 +80,19 @@
     <Compile Include="Assets\Main\MouseHover.cs" />
     <Compile Include="Assets\PlayerController.cs" />
     <Compile Include="Assets\PlayerGrit.cs" />
+    <Compile Include="Assets\Scripts\Items\Hand.cs" />
     <Compile Include="Assets\Scripts\Items\ItemDetection.cs" />
     <Compile Include="Assets\Scripts\Items\ItemPickup.cs" />
+    <Compile Include="Assets\Scripts\Items\LeftHand.cs" />
+    <Compile Include="Assets\Scripts\Items\RightHand.cs" />
     <Compile Include="Assets\Scripts\Tilting\Tilting.cs" />
     <Compile Include="Assets\Scripts\Tilting\WaitTilting.cs" />
     <Compile Include="Assets\XInputDotNet\Examples\XInputTestCS.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Main\Note.txt" />
+    <None Include="Assets\Materials\Outlined-Silhouette Only.shader" />
+    <None Include="Assets\Suite\StandardShader.shader" />
     <None Include="Assets\TSF\Shaders\TSF.shader" />
     <None Include="Assets\TSF\Shaders\TSFOutline.shader" />
     <None Include="Assets\XInputDotNet\MITLicense.txt" />

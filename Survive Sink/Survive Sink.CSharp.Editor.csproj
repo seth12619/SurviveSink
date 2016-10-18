@@ -106,6 +106,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Main\Note.txt" />
+    <None Include="Assets\Materials\Outlined-Silhouette Only.shader" />
+    <None Include="Assets\Suite\StandardShader.shader" />
     <None Include="Assets\TSF\Shaders\TSF.shader" />
     <None Include="Assets\TSF\Shaders\TSFOutline.shader" />
     <None Include="Assets\XInputDotNet\MITLicense.txt" />
