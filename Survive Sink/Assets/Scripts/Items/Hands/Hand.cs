@@ -13,11 +13,21 @@ public class Hand : MonoBehaviour {
 	void Update () {
 	}
 
+    public IEnumerator useItem()
+    {
+        if (item != null)
+        {
+            StartCoroutine(item.GetComponent<ItemPickup>().use());
+        }
+        yield return null;
+    }
+
     public IEnumerator detachFromPlayer()
     {
         if (item != null)
         {
-            StartCoroutine(item.detachFromPlayer());
+            GameObject ship = GameObject.Find("Ship");
+            StartCoroutine(item.detachFromPlayer(ship.transform.rotation));
         }
         item = null;
 

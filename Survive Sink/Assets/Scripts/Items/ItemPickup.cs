@@ -6,7 +6,7 @@ public class ItemPickup : MonoBehaviour
 
     [Header("Pickup Settings")]
     [Tooltip("Scale of object when picked up. (Doesn't Work)")]
-    public float pickUpScale = 0.25f;
+    public float pickUpScale = 0.2f;
 
     [Header("Tilt Settings")]
     [Tooltip("Tilt of object in the X. (Degrees)")]
@@ -83,10 +83,17 @@ public class ItemPickup : MonoBehaviour
 
     public IEnumerator detachFromPlayer()
     {
+        StartCoroutine(detachFromPlayer(transform.rotation));
+        yield return null;
+    }
+
+    public IEnumerator detachFromPlayer(Quaternion x)
+    {
         //GameObject Camera = GameObject.Find("Camera");
         //transform.position = Camera.transform.position + Quaternion.Euler(Camera.transform.rotation.x, 0, Camera.transform.rotation.z) 
         //* new Vector3(XShift * nextToPlayer, 0, ZShift);
         transform.localScale /= pickUpScale;
+        transform.rotation = x;
         //transform.position = Camera.transform.position + Camera.transform.rotation.x * new Vector3(XShift * nextToPlayer, 0, ZShift);
         //transform.position = Camera.transform.position + Camera.transform.rotation * new Vector3(0,0,ZShift);
         nextToPlayer = 0;
@@ -105,5 +112,10 @@ public class ItemPickup : MonoBehaviour
             GUI.Box(new Rect(rectXMargin, rectYMargin, pickupRectWidth, 25), "Press 'Q' to pick up in your left hand");
             GUI.Box(new Rect(Screen.width - rectXMargin - pickupRectWidth, rectYMargin, pickupRectWidth, 25), "Press 'R' to pick up in your right hand");
         }
+    }
+
+    public virtual IEnumerator use()
+    {
+        yield return null;
     }
 }

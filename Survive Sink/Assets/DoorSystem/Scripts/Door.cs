@@ -170,7 +170,6 @@ public class Door : MonoBehaviour {
 			}
             // Set 'finalRotation' to 'Endrot' when moving and to 'StartRot' when moving back.
             Quaternion finalRotation = (Ship != null ? Ship.transform.rotation : Quaternion.Euler(0,0,0)) * ((State == 0) ? EndRot : StartRot);
-            Debug.Log(StartRot + " " + EndRot);
 
             // Make the door rotate until it is fully opened/closed.
             while (Mathf.Abs(Quaternion.Angle(finalRotation, hinge.transform.rotation)) > 0.01f)
