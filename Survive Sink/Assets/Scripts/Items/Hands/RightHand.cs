@@ -9,6 +9,10 @@ public class RightHand : Hand {
         {
             StartCoroutine(detachFromPlayer());
         }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            StartCoroutine(useItem());
+        }
     }
 
     public override void itemAttachHook(ItemPickup newItem)
