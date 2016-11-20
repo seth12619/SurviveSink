@@ -56,12 +56,11 @@ public class Detection : MonoBehaviour
 			//DEBUGGING (DEBUG PANEL)
 			//DebugPanel.Log(TitleHitTag, CategoryDoor, hit.collider.tag);
 
-			if(hit.collider.tag == TriggerTag)
-			{
+			if (hit.collider.tag == TriggerTag || hit.collider.tag == "EndingTrigger") {
 				InReach = true;
 
-                doAction(hit);
-			}
+				doAction (hit);
+			} 
 
 			else InReach = false;
 
@@ -105,6 +104,11 @@ public class Detection : MonoBehaviour
     {
         if (Input.GetButtonDown("Use"))
         {
+			if (hit.collider.tag == "EndingTrigger") {
+				Debug.Log ("Quit!");
+				//Application.Quit ();
+				Time.timeScale = 0; 
+			}
             // Give the object that was hit the name 'Door'.
             GameObject Door = hit.transform.gameObject;
 

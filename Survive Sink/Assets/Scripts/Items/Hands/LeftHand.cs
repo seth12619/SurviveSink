@@ -3,9 +3,7 @@ using System.Collections;
 
 public class LeftHand : Hand {
 
-	
-    void Update() {
-	float l2 = Input.GetAxis("UseLeftHand");
+    {
         if (Input.GetButtonDown("DropLeftHand"))
         {
             StartCoroutine(detachFromPlayer());
