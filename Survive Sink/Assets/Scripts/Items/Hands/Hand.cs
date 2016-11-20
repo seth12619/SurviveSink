@@ -27,7 +27,7 @@ public class Hand : MonoBehaviour {
         if (item != null)
         {
             GameObject ship = GameObject.Find("Ship");
-            StartCoroutine(item.detachFromPlayer(ship.transform.rotation));
+            StartCoroutine(item.detachFromPlayer());
         }
         item = null;
 

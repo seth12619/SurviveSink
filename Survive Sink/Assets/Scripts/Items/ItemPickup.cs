@@ -46,12 +46,6 @@ public class ItemPickup : MonoBehaviour
     {
         if (nextToPlayer != 0)
         {
-            GameObject Camera = GameObject.Find("Camera");
-
-            transform.rotation = Quaternion.Euler(X_DEG_Shift, Y_DEG_Shift * nextToPlayer, Z_DEG_Shift * nextToPlayer);
-            transform.position = Camera.transform.position + Camera.transform.rotation*new Vector3(XShift * nextToPlayer * pickUpScale, YShift * pickUpScale, ZShift * pickUpScale);
-
-            transform.rotation = Camera.transform.rotation * transform.rotation;
         }
         else
         {
@@ -76,19 +70,30 @@ public class ItemPickup : MonoBehaviour
         yield return null;
     }
 
+    public virtual IEnumerator use()
+    {
+        yield return null;
+    }
+
     void attachToPlayer()
     {
         transform.localScale *= pickUpScale;
+
+        GameObject Camera = GameObject.Find("Camera");
+        transform.rotation = Quaternion.Euler(X_DEG_Shift, Y_DEG_Shift * nextToPlayer, Z_DEG_Shift * nextToPlayer);
+        transform.rotation = Camera.transform.rotation * transform.rotation;
+        rigidbody.isKinematic = true;
+        rigidbody.detectCollisions = false;
+        transform.position = Camera.transform.position + Camera.transform.rotation * new Vector3(XShift * nextToPlayer * pickUpScale, YShift * pickUpScale, ZShift * pickUpScale);
+        transform.parent = Camera.transform;
     }
 
     public IEnumerator detachFromPlayer()
     {
-        //GameObject Camera = GameObject.Find("Camera");
-        //transform.position = Camera.transform.position + Quaternion.Euler(Camera.transform.rotation.x, 0, Camera.transform.rotation.z) 
-        //* new Vector3(XShift * nextToPlayer, 0, ZShift);
+        rigidbody.isKinematic = false;
+        rigidbody.detectCollisions = true;
+        transform.parent = null;
         transform.localScale /= pickUpScale;
-        //transform.position = Camera.transform.position + Camera.transform.rotation.x * new Vector3(XShift * nextToPlayer, 0, ZShift);
-        //transform.position = Camera.transform.position + Camera.transform.rotation * new Vector3(0,0,ZShift);
         nextToPlayer = 0;
         yield return null;
     }
@@ -102,8 +107,8 @@ public class ItemPickup : MonoBehaviour
         if (detection.InReach == true)
         {
             GUI.color = Color.white;
-            GUI.Box(new Rect(rectXMargin, rectYMargin, pickupRectWidth, 25), "Press 'Q' or 'Square' to pick up in your left hand");
-            GUI.Box(new Rect(Screen.width - rectXMargin - pickupRectWidth, rectYMargin, pickupRectWidth, 25), "Press 'R' or 'Circle' to pick up in your right hand");
+            GUI.Box(new Rect(rectXMargin, rectYMargin, pickupRectWidth, 25), "Press 'Q' to pick up in your left hand");
+            GUI.Box(new Rect(Screen.width - rectXMargin - pickupRectWidth, rectYMargin, pickupRectWidth, 25), "Press 'R' to pick up in your right hand");
         }
     }
 }
