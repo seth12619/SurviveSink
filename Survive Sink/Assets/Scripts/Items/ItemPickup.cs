@@ -107,13 +107,8 @@ public class ItemPickup : MonoBehaviour
         if (detection.InReach == true)
         {
             GUI.color = Color.white;
-<<<<<<< HEAD
-            GUI.Box(new Rect(rectXMargin, rectYMargin, pickupRectWidth, 25), "Press 'Q' to pick up in your left hand");
-            GUI.Box(new Rect(Screen.width - rectXMargin - pickupRectWidth, rectYMargin, pickupRectWidth, 25), "Press 'R' to pick up in your right hand");
-=======
             GUI.Box(new Rect(rectXMargin, rectYMargin, pickupRectWidth, 25), "Press 'Q' or 'L1' to pick up in your left hand");
             GUI.Box(new Rect(Screen.width - rectXMargin - pickupRectWidth, rectYMargin, pickupRectWidth, 25), "Press 'R' or 'R1' to pick up in your right hand");
->>>>>>> refs/remotes/origin/master
         }
     }
 }
