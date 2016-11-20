@@ -46,12 +46,12 @@ public class ItemPickup : MonoBehaviour
     {
         if (nextToPlayer != 0)
         {
-            GameObject Camera = GameObject.Find("Camera");
+            /*GameObject Camera = GameObject.Find("Camera");
 
             transform.rotation = Quaternion.Euler(X_DEG_Shift, Y_DEG_Shift * nextToPlayer, Z_DEG_Shift * nextToPlayer);
             transform.position = Camera.transform.position + Camera.transform.rotation*new Vector3(XShift * nextToPlayer * pickUpScale, YShift * pickUpScale, ZShift * pickUpScale);
 
-            transform.rotation = Camera.transform.rotation * transform.rotation;
+            transform.rotation = Camera.transform.rotation * transform.rotation;*/
         }
         else
         {
@@ -79,6 +79,14 @@ public class ItemPickup : MonoBehaviour
     void attachToPlayer()
     {
         transform.localScale *= pickUpScale;
+
+        GameObject Camera = GameObject.Find("Camera");
+        transform.rotation = Quaternion.Euler(X_DEG_Shift, Y_DEG_Shift * nextToPlayer, Z_DEG_Shift * nextToPlayer);
+        transform.rotation = Camera.transform.rotation * transform.rotation;
+        rigidbody.isKinematic = true;
+        rigidbody.detectCollisions = false;
+        transform.position = Camera.transform.position + Camera.transform.rotation * new Vector3(XShift * nextToPlayer * pickUpScale, YShift * pickUpScale, ZShift * pickUpScale);
+        transform.parent = Camera.transform;
     }
 
     public IEnumerator detachFromPlayer()
@@ -86,9 +94,12 @@ public class ItemPickup : MonoBehaviour
         //GameObject Camera = GameObject.Find("Camera");
         //transform.position = Camera.transform.position + Quaternion.Euler(Camera.transform.rotation.x, 0, Camera.transform.rotation.z) 
         //* new Vector3(XShift * nextToPlayer, 0, ZShift);
-        transform.localScale /= pickUpScale;
         //transform.position = Camera.transform.position + Camera.transform.rotation.x * new Vector3(XShift * nextToPlayer, 0, ZShift);
         //transform.position = Camera.transform.position + Camera.transform.rotation * new Vector3(0,0,ZShift);
+        rigidbody.isKinematic = false;
+        rigidbody.detectCollisions = true;
+        transform.parent = null;
+        transform.localScale /= pickUpScale;
         nextToPlayer = 0;
         yield return null;
     }
