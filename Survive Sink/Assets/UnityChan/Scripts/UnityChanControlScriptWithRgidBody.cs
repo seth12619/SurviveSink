@@ -110,11 +110,13 @@ public class UnityChanControlScriptWithRgidBody : MonoBehaviour
 		//transform.Rotate(0, h * rotateSpeed, 0);	
 		//Mouselook rotates fer us
 		//How to strafe left and right 
-		if (Input.GetKey("a")) {
-			transform.Translate(-Vector3.right * 1 * Time.deltaTime);
-		}
-		if (Input.GetKey("d")) {
-			transform.Translate(-Vector3.left * 1 * Time.deltaTime);
+		velocity = new Vector3(0, h, 0);		
+		velocity = transform.TransformDirection(velocity);
+		//以下のvの閾値は、Mecanim側のトランジションと一緒に調整する
+		if (h > 0.1) {
+			velocity *= forwardSpeed;		// 移動速度を掛ける
+		} else if (h < -0.1) {
+			velocity *= backwardSpeed;	// 移動速度を掛ける
 		}
 	
 
