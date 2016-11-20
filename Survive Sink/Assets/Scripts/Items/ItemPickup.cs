@@ -30,19 +30,21 @@ public class ItemPickup : MonoBehaviour
 
     private Rigidbody rigidbody;
     private float rigidbodyMass;
+    protected GameObject Camera;
 
     // 0 means player isn't holding item. -1 means left hand and 1 means right hand.
-    private int nextToPlayer = 0;
+    protected int nextToPlayer = 0;
 
     // Use this for initialization
-    void Start()
+    public virtual void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
         rigidbodyMass = rigidbody.mass;
+        Camera = GameObject.Find("Camera");
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
         if (nextToPlayer != 0)
         {
@@ -79,7 +81,7 @@ public class ItemPickup : MonoBehaviour
     {
         transform.localScale *= pickUpScale;
 
-        GameObject Camera = GameObject.Find("Camera");
+        
         transform.rotation = Quaternion.Euler(X_DEG_Shift, Y_DEG_Shift * nextToPlayer, Z_DEG_Shift * nextToPlayer);
         transform.rotation = Camera.transform.rotation * transform.rotation;
         rigidbody.isKinematic = true;
