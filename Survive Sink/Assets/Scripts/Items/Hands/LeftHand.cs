@@ -5,7 +5,7 @@ public class LeftHand : Hand {
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetButtonDown("DropLeftHand"))
         {
             StartCoroutine(detachFromPlayer());
         }
