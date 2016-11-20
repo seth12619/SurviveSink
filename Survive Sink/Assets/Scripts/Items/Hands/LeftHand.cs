@@ -3,13 +3,14 @@ using System.Collections;
 
 public class LeftHand : Hand {
 
-    void Update()
-    {
+	
+    void Update() {
+	float l2 = Input.GetAxis("UseLeftHand");
         if (Input.GetButtonDown("DropLeftHand"))
         {
             StartCoroutine(detachFromPlayer());
         }
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (l2 > 0)
         {
             StartCoroutine(useItem());
         }
