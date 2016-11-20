@@ -26,7 +26,7 @@ public class UnityChanControlScriptWithRgidBody : MonoBehaviour
 	// 後退速度
 	public float backwardSpeed = 2.0f;
 	// 旋回速度
-	public float rotateSpeed = 2.0f;
+	public float strafeSpeed = 4.0f;
 	// ジャンプ威力
 	public float jumpPower = 3.0f; 
 	// キャラクターコントローラ（カプセルコライダ）の参照
@@ -110,14 +110,19 @@ public class UnityChanControlScriptWithRgidBody : MonoBehaviour
 		//transform.Rotate(0, h * rotateSpeed, 0);	
 		//Mouselook rotates fer us
 		//How to strafe left and right 
-		velocity = new Vector3(0, h, 0);		
+		/**
+		if (Input.GetKey("d")) {
+			transform.Translate(-Vector3.left * 1 * Time.deltaTime);
+		}**/
+		velocity = new Vector3(h, 0, 0);		// 上下のキー入力からZ軸方向の移動量を取得
 		velocity = transform.TransformDirection(velocity);
 		//以下のvの閾値は、Mecanim側のトランジションと一緒に調整する
 		if (h > 0.1) {
-			velocity *= forwardSpeed;		// 移動速度を掛ける
+			velocity *= strafeSpeed;		// 移動速度を掛ける
 		} else if (h < -0.1) {
-			velocity *= backwardSpeed;	// 移動速度を掛ける
+			velocity *= strafeSpeed;	// 移動速度を掛ける
 		}
+		transform.localPosition += velocity * Time.fixedDeltaTime;
 	
 
 		// 以下、Animatorの各ステート中での処理

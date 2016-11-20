@@ -103,7 +103,7 @@ public class Detection : MonoBehaviour
 
     public virtual void doAction(RaycastHit hit)
     {
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetButtonDown("Use"))
         {
             // Give the object that was hit the name 'Door'.
             GameObject Door = hit.transform.gameObject;
