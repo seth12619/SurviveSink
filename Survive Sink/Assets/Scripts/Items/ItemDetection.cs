@@ -14,7 +14,7 @@ public class ItemDetection : Detection {
 
     public override void doAction(RaycastHit hit)
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetButtonDown("LeftHand"))
         {
             GameObject item = hit.transform.gameObject;
 
@@ -22,7 +22,7 @@ public class ItemDetection : Detection {
 
             StartCoroutine(leftHand.attachToPlayer(itemPickedUp));
 
-        } else if (Input.GetKeyDown(KeyCode.R))
+        } else if (Input.GetButtonDown("RightHand"))
         {
             GameObject item = hit.transform.gameObject;
 
