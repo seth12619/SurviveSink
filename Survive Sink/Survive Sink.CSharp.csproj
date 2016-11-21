@@ -94,6 +94,7 @@
     <Compile Include="Assets\Scripts\Items\Hands\RightHand.cs" />
     <Compile Include="Assets\Scripts\Items\ItemDetection.cs" />
     <Compile Include="Assets\Scripts\Items\ItemPickup.cs" />
+    <Compile Include="Assets\Scripts\Items\ItemTypes\FireAx.cs" />
     <Compile Include="Assets\Scripts\Items\ItemTypes\LifeJacket.cs" />
     <Compile Include="Assets\Scripts\Tilting\Tilting.cs" />
     <Compile Include="Assets\Scripts\Tilting\WaitTilting.cs" />

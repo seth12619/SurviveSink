@@ -31,7 +31,6 @@ public class ItemDetection : Detection {
             ItemPickup itemPickedUp = item.GetComponent<ItemPickup>();
 
             StartCoroutine(rightHand.attachToPlayer(itemPickedUp));
-
         }
     }
 }

@@ -9,6 +9,8 @@ using UnityEngine.UI;
 
 public class Detection : MonoBehaviour
 {
+    public RaycastHit hitMe;
+
 	// INSPECTOR SETTINGS
 	[Header("Detection Settings")]
 	[Tooltip("Within this radius the player is able to open/close the door")]
@@ -53,8 +55,9 @@ public class Detection : MonoBehaviour
 		// Cast a ray from the center of screen towards where the player is looking.
 		if (Physics.Raycast (ray, out hit, Reach))
 		{
-			//DEBUGGING (DEBUG PANEL)
-			//DebugPanel.Log(TitleHitTag, CategoryDoor, hit.collider.tag);
+            //DEBUGGING (DEBUG PANEL)
+            //DebugPanel.Log(TitleHitTag, CategoryDoor, hit.collider.tag);
+            hitMe = hit;
 
 			if (hit.collider.tag == TriggerTag || hit.collider.tag == "EndingTrigger") {
 				InReach = true;
