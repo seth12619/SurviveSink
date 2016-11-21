@@ -4,6 +4,7 @@ using System.Collections;
 public class ItemDetection : Detection {
     LeftHand leftHand;
     RightHand rightHand;
+    RaycastHit hitMe;
 
     void Start()
     {
@@ -14,6 +15,7 @@ public class ItemDetection : Detection {
 
     public override void doAction(RaycastHit hit)
     {
+        hitMe = hit;
         if (Input.GetButtonDown("LeftHand"))
         {
             GameObject item = hit.transform.gameObject;
