@@ -88,6 +88,7 @@
     <Compile Include="Assets\PlayerGrit.cs" />
     <Compile Include="Assets\Scripts\HelpfulScript\WakeUpRigidbody.cs" />
     <Compile Include="Assets\Scripts\Items\Controller\ItemController.cs" />
+    <Compile Include="Assets\Scripts\Items\FurnitureDetection.cs" />
     <Compile Include="Assets\Scripts\Items\Hands\Hand.cs" />
     <Compile Include="Assets\Scripts\Items\Hands\LeftHand.cs" />
     <Compile Include="Assets\Scripts\Items\Hands\RightHand.cs" />
