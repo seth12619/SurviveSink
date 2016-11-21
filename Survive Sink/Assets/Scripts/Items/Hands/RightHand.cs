@@ -5,11 +5,12 @@ public class RightHand : Hand {
 
     void Update()
     {
+		float r2 = Input.GetAxis("UseRightHand");
         if (Input.GetButtonDown("DropRightHand"))
         {
             StartCoroutine(detachFromPlayer());
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if ((r2<0) || (Input.GetKeyDown(KeyCode.Alpha2)) )
         {
             StartCoroutine(useItem());
         }

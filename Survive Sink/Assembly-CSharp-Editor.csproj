@@ -47,6 +47,9 @@
   <ItemGroup>
      <Compile Include="Assets\DoorSystem\Debugger\Yurowm\Editor\DebugPanelWindow.cs" />
      <Compile Include="Assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
+     <Compile Include="Assets\Objects\Customizable_Furnture\Editor\Customizable_Furniture\EditorCleanUpAll.cs" />
+     <Compile Include="Assets\Objects\Customizable_Furnture\Editor\Customizable_Furniture\EditorOptionsDisplay.cs" />
+     <Compile Include="Assets\Objects\Customizable_Furnture\Editor\Customizable_Furniture\EditorSimpleSwitchMaterial.cs" />
      <None Include="Assets\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_eye.shader" />
      <None Include="Assets\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />
      <None Include="Assets\Suite\StandardShader.shader" />
@@ -63,6 +66,7 @@
      <None Include="Assets\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_hair.shader" />
      <None Include="Assets\UnityChan\Stage\Shader\AlphaMask.shader" />
      <None Include="Assets\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_eyelash_blend.shader" />
+     <None Include="Assets\Objects\Customizable_Furnture\Readme\Readme.txt" />
      <None Include="Assets\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_hada.shader" />
      <None Include="Assets\Main\Note.txt" />
      <None Include="Assets\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_hada_blend.shader" />
@@ -97,7 +101,7 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="XInputDotNetPure">
- <HintPath>C:/Users/LenovoX230/Desktop/School/College/Fourth Year/Thesis Stuff/Repositories/SurviveSink/Survive Sink/Assets/Plugins/x86_64/XInputDotNetPure.dll</HintPath>
+ <HintPath>C:/Users/Set/Desktop/Desktop/School/CS/4th yr/THESIS/Survive Sink/Assets/Plugins/x86_64/XInputDotNetPure.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
