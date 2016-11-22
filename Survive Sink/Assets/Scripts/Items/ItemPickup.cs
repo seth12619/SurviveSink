@@ -6,29 +6,30 @@ public class ItemPickup : MonoBehaviour
 
     [Header("Pickup Settings")]
     [Tooltip("Scale of object when picked up. (Doesn't Work)")]
-    public float pickUpScale = 0.25f;
+    protected float pickUpScale = 0.25f;
 
     [Header("Tilt Settings")]
     [Tooltip("Tilt of object in the X. (Degrees)")]
-    public float X_DEG_Shift = 126;
+    protected float X_DEG_Shift = 126;
     [Tooltip("Tilt of object in the Y. (Degrees)")]
-    public float Y_DEG_Shift = 190;
+    protected float Y_DEG_Shift = 190;
     [Tooltip("Tilt of object in the Z. (Degrees)")]
-    public float Z_DEG_Shift = -111;
+    protected float Z_DEG_Shift = -111;
 
     [Header("Offset Settings")]
     [Tooltip("Offset of object in the X when Picked up. (Degrees)")]
-    private float XShift = 0.3f;
+    protected float XShift = 0.3f;
     [Tooltip("Offset of object in the Y when Picked up. (Degrees)")]
-    private float YShift = -0.1f;
+    protected float YShift = -0.1f;
     [Tooltip("Offset of object in the Z when Picked up. (Degrees)")]
-    private float ZShift = 0.2f;
+    protected float ZShift = 0.2f;
 
     private int pickupRectWidth = 250;
     private int rectXMargin = 20;
     private int rectYMargin = 20;
 
-    private Rigidbody rigidbody;
+    new private Rigidbody rigidbody;
+    private MeshRenderer meshRend;
     private float rigidbodyMass;
     protected GameObject Camera;
 
@@ -39,6 +40,7 @@ public class ItemPickup : MonoBehaviour
     public virtual void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
+        meshRend = GetComponent<MeshRenderer>();
         rigidbodyMass = rigidbody.mass;
         Camera = GameObject.Find("Camera");
     }
@@ -79,9 +81,9 @@ public class ItemPickup : MonoBehaviour
 
     void attachToPlayer()
     {
+        meshRend.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
         transform.localScale *= pickUpScale;
 
-        
         transform.rotation = Quaternion.Euler(X_DEG_Shift, Y_DEG_Shift * nextToPlayer, Z_DEG_Shift * nextToPlayer);
         transform.rotation = Camera.transform.rotation * transform.rotation;
         rigidbody.isKinematic = true;
@@ -92,6 +94,7 @@ public class ItemPickup : MonoBehaviour
 
     public IEnumerator detachFromPlayer()
     {
+        meshRend.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
         rigidbody.isKinematic = false;
         rigidbody.detectCollisions = true;
         transform.parent = null;

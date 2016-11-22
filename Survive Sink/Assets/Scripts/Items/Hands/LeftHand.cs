@@ -10,7 +10,7 @@ public class LeftHand : Hand {
         {
             StartCoroutine(detachFromPlayer());
         }
-        if ((l2 > 0) || (Input.GetKeyDown(KeyCode.Alpha2)) )
+        if ((l2 > 0) || (Input.GetKeyDown(KeyCode.Alpha1)) )
         {
             StartCoroutine(useItem());
         }

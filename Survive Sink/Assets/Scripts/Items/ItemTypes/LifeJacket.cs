@@ -18,6 +18,14 @@ public class LifeJacket : ItemPickup {
         base.Start();
         player = GameObject.Find("Player");
         controller = player.GetComponent<UnityChanControlScriptWithRgidBody>();
+
+        pickUpScale = 0.25f;
+        X_DEG_Shift = 126;
+        Y_DEG_Shift = 190;
+        Z_DEG_Shift = -111;
+        XShift = 0.3f;
+        YShift = -0.1f;
+        ZShift = 0.2f;
     }
 
     public override void Update()
