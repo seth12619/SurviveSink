@@ -14,9 +14,10 @@ public class MainTracker : MonoBehaviour {
 	
 	}
 
-    IEnumerator addLifeJacket()
+    public IEnumerator addLifeJacket()
     {
         lifeJacketTracker++;
+        Debug.Log(lifeJacketTracker);
         yield return null;
     }
 }

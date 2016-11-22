@@ -43,7 +43,9 @@ public class LifeJacket : ItemPickup {
                     temporary = player.GetComponent<LeftHand>();
                 }
                 StartCoroutine(temporary.detachFromPlayer());
-                transform.position = GameObject.Find("Tracker").transform.position;
+                StartCoroutine(GameObject.Find("Tracker").GetComponent<MainTracker>().addLifeJacket());
+                //transform.position = GameObject.Find("Tracker").transform.position;
+                StartCoroutine(destroyMe());
             }
         }
     }
@@ -79,6 +81,12 @@ public class LifeJacket : ItemPickup {
         controller.strafeSpeed /= JacketSlowDown;
         slowingDown = false;
         transform.position += Camera.transform.rotation * new Vector3(0, -movement, 0);
+        yield return null;
+    }
+
+    IEnumerator destroyMe()
+    {
+        Destroy(gameObject);
         yield return null;
     }
 }
