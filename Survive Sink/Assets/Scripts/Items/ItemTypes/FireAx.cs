@@ -5,6 +5,12 @@ public class FireAx : ItemPickup {
     GameObject player;
     Detection Det;
 
+    private float SWING_SPEED = 1.5f;
+    private string ACTION = "Swinging Fireaxe";
+
+    private float currTime = 0f;
+    private bool swinging = false;
+
     private string tagFurn = "Furniture";
 
     public override void Start()
@@ -22,15 +28,55 @@ public class FireAx : ItemPickup {
         ZShift = 0.2f;
     }
 
+    public override void Update()
+    {
+        base.Update();
+        if (swinging)
+        {
+            currTime += Time.deltaTime;
+
+            if (nextToPlayer == 0)
+            {
+                StartCoroutine(stopTrying());
+            }
+            else if (nextToPlayer == 1)
+            {
+                StartCoroutine(aT.rightHandAction(ACTION, SWING_SPEED, currTime));
+            }
+            else
+            {
+                StartCoroutine(aT.leftHandAction(ACTION, SWING_SPEED, currTime));
+            }
+            
+            if (currTime > SWING_SPEED)
+            {
+                Debug.Log(Det.hitMe.collider.tag);
+                if (Det.hitMe.collider.tag == tagFurn)
+                {
+                    GameObject furn = Det.hitMe.transform.gameObject;
+
+                    Destroy(furn);
+                }
+                StartCoroutine(stopTrying());
+            }
+        }
+    }
+
+    public IEnumerator stopTrying()
+    {
+        swinging = false;
+        currTime = 0f;
+        if (nextToPlayer == 1)
+            StartCoroutine(aT.stopRightHand());
+        else
+            StartCoroutine(aT.stopLeftHand());
+
+        yield return null;
+    }
+
     public override IEnumerator use()
     {
-        Debug.Log(Det.hitMe.collider.tag);
-        if(Det.hitMe.collider.tag == tagFurn)
-        {
-            GameObject furn = Det.hitMe.transform.gameObject;
-
-            Destroy(furn);
-        }
+        swinging = true;
         yield return null;
     }
 }

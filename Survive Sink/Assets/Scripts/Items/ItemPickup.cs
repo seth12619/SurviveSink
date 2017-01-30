@@ -36,9 +36,14 @@ public class ItemPickup : MonoBehaviour
     // 0 means player isn't holding item. -1 means left hand and 1 means right hand.
     protected int nextToPlayer = 0;
 
+    protected ActionTimer aT;
+
     // Use this for initialization
     public virtual void Start()
     {
+        GameObject temp = GameObject.Find("Tracker");
+        aT = temp.GetComponent<ActionTimer>();
+
         rigidbody = GetComponent<Rigidbody>();
         meshRend = GetComponent<MeshRenderer>();
         rigidbodyMass = rigidbody.mass;

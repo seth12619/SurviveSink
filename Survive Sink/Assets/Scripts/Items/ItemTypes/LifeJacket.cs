@@ -11,6 +11,8 @@ public class LifeJacket : ItemPickup {
     private float currTime = 0f;
     private float cancelTime = 2f;
 
+    private string ACTION = "Putting on Life Jacket";
+
     private float movement = -0.025f;
 
     public override void Start()
@@ -38,6 +40,15 @@ public class LifeJacket : ItemPickup {
             {
                 StartCoroutine(stopTrying());
             }
+            else if (nextToPlayer == 1)
+            {
+                StartCoroutine(aT.rightHandAction(ACTION, finishTime, currTime));
+            }
+            else
+            {
+                StartCoroutine(aT.leftHandAction(ACTION, finishTime, currTime));
+            }
+
             if (currTime > finishTime)
             {
                 StartCoroutine(stopTrying());
@@ -89,6 +100,12 @@ public class LifeJacket : ItemPickup {
         controller.strafeSpeed /= JacketSlowDown;
         slowingDown = false;
         transform.position += Camera.transform.rotation * new Vector3(0, -movement, 0);
+
+        if (nextToPlayer == 1)
+            StartCoroutine(aT.stopRightHand());
+        else
+            StartCoroutine(aT.stopLeftHand());
+
         yield return null;
     }
 
