@@ -4,7 +4,6 @@ using System.Collections;
 public class ItemDetection : Detection {
     LeftHand leftHand;
     RightHand rightHand;
-    RaycastHit hitMe;
 
     void Start()
     {
