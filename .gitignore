@@ -84,6 +84,7 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+<<<<<<< HEAD
 Survive Sink/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
 Survive Sink/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
 Survive Sink/Library/ScriptAssemblies/Assembly-CSharp.dll.mdb
@@ -101,3 +102,23 @@ Survive Sink/Library/metadata/00/00000000000000004000000000000000
 Survive Sink/Library/metadata/00/00000000000000006100000000000000
 *.mdb
 *.dll
+=======
+# Unity3D .gitignore file.
+# Store this file at the root of your local repository.
+.DS_Store
+Library/AssetImportState
+Library/AssetServerCacheV3
+Library/FailedAssetImports.txt
+Library/ScriptAssemblies
+Library/ScriptMapper
+Library/assetDatabase3
+Library/cache
+Library/expandedItems
+Library/metadata
+Library/previews
+Library/guidmapper
+Temp
+*.csproj
+*.pidb
+*.sln
+>>>>>>> refs/remotes/origin/master
