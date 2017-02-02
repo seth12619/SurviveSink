@@ -107,7 +107,9 @@
     <Compile Include="Assets\Scripts\Items\ItemPickup.cs" />
     <Compile Include="Assets\Scripts\Items\ItemTypes\FireAx.cs" />
     <Compile Include="Assets\Scripts\Items\ItemTypes\LifeJacket.cs" />
+    <Compile Include="Assets\Scripts\Tilting\CameraTilting.cs" />
     <Compile Include="Assets\Scripts\Tilting\Tilting.cs" />
+    <Compile Include="Assets\Scripts\Tilting\TiltingGrav.cs" />
     <Compile Include="Assets\Scripts\Tilting\WaitTilting.cs" />
     <Compile Include="Assets\Scripts\Tracker\MainTracker.cs" />
     <Compile Include="Assets\UnityChan\Scripts\CameraController.cs" />
