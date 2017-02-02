@@ -38,10 +38,18 @@ public class Detection : MonoBehaviour
 	string TitleTimesMoveable = "TimesMoveable";
 	string TitleRunning = "Running";
 
+	PlayerGrit grit;
+
 	//START FUNCTION
 	void Start()
 	{
 
+	}
+
+	//AWAKE
+	void Awake()
+	{
+		grit = GetComponent<PlayerGrit> ();
 	}
 
 	//UPDATE FUNCTION
@@ -111,6 +119,8 @@ public class Detection : MonoBehaviour
 				Debug.Log ("Quit!");
 				//Application.Quit ();
 				Time.timeScale = 0; 
+			} else if (hit.collider.tag == "Stuck Debris") {
+				Destroy (hit.transform.gameObject);
 			}
             // Give the object that was hit the name 'Door'.
             GameObject Door = hit.transform.gameObject;
@@ -125,5 +135,6 @@ public class Detection : MonoBehaviour
                 StartCoroutine(hit.collider.GetComponent<Door>().Open());
             }
         }
+
     }
 }
