@@ -62,7 +62,8 @@ public class LifeJacket : ItemPickup {
                     temporary = player.GetComponent<LeftHand>();
                 }
                 StartCoroutine(temporary.detachFromPlayer());
-                StartCoroutine(GameObject.Find("Tracker").GetComponent<MainTracker>().addLifeJacket());
+                StartCoroutine(mainTracker.addLifeJacket());
+                StartCoroutine(mainTracker.useStamina(40));
                 //transform.position = GameObject.Find("Tracker").transform.position;
                 StartCoroutine(destroyMe());
             }
@@ -84,6 +85,7 @@ public class LifeJacket : ItemPickup {
 
     IEnumerator startTrying()
     {
+        StartCoroutine(mainTracker.useStamina(10));
         controller.forwardSpeed *= JacketSlowDown;
         controller.backwardSpeed *= JacketSlowDown;
         controller.strafeSpeed *= JacketSlowDown;

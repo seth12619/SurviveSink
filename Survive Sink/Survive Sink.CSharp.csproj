@@ -98,6 +98,7 @@
     <Compile Include="Assets\PlayerController.cs" />
     <Compile Include="Assets\PlayerGrit.cs" />
     <Compile Include="Assets\Scripts\HUD\ActionTimer.cs" />
+    <Compile Include="Assets\Scripts\HUD\EndReport.cs" />
     <Compile Include="Assets\Scripts\HelpfulScript\WakeUpRigidbody.cs" />
     <Compile Include="Assets\Scripts\Items\Controller\ItemController.cs" />
     <Compile Include="Assets\Scripts\Items\Hands\Hand.cs" />

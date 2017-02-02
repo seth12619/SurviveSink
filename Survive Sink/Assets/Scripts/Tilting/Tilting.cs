@@ -9,6 +9,7 @@ public class Tilting : MonoBehaviour {
     private float targetZDeg;
     private int turningRight;
     private int currIncrements;
+    private bool stillWorking = true;
 
     [Header("Tilt Settings")]
     [Tooltip("Percentage to tilt to the the other side.")]
@@ -34,6 +35,7 @@ public class Tilting : MonoBehaviour {
 
     // Update is called once per frame
     protected virtual void Update () {
+        if(stillWorking)
         decideAction();
 	}
 
@@ -177,5 +179,10 @@ public class Tilting : MonoBehaviour {
     public float getCurrZDeg()
     {
         return currZDeg;
+    }
+
+    public void stopWorking()
+    {
+        stillWorking = false;
     }
 }

@@ -17,6 +17,6 @@ public class TiltingGrav : MonoBehaviour {
         float x = wt.getCurrXDeg();
         float z = wt.getCurrZDeg();
 
-        rg.AddForce(new Vector3(-z,0,x)*Time.deltaTime*1000);
+        rg.AddForce(new Vector3(-z,0,x)*Time.deltaTime*500);
 	}
 }

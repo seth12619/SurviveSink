@@ -38,6 +38,8 @@ public class ItemPickup : MonoBehaviour
 
     protected ActionTimer aT;
 
+    protected MainTracker mainTracker;
+
     // Use this for initialization
     public virtual void Start()
     {
@@ -48,6 +50,8 @@ public class ItemPickup : MonoBehaviour
         meshRend = GetComponent<MeshRenderer>();
         rigidbodyMass = rigidbody.mass;
         Camera = GameObject.Find("Camera");
+
+        mainTracker = GameObject.Find("Tracker").GetComponent<MainTracker>();
     }
 
     // Update is called once per frame
