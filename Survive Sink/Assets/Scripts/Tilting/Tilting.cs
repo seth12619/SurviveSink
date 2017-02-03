@@ -9,6 +9,7 @@ public class Tilting : MonoBehaviour {
     private float targetZDeg;
     private int turningRight;
     private int currIncrements;
+    private bool stillWorking = true;
 
     [Header("Tilt Settings")]
     [Tooltip("Percentage to tilt to the the other side.")]
@@ -31,9 +32,10 @@ public class Tilting : MonoBehaviour {
         targetXDeg = 0;
         targetZDeg = 0;
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    protected virtual void Update () {
+        if(stillWorking)
         decideAction();
 	}
 
@@ -103,8 +105,8 @@ public class Tilting : MonoBehaviour {
         float tempZ = zDeg - currZDeg;
         tempZ = tempZ / increments;
 
-        transform.Rotate(-currXDeg, 0, 0);
-        transform.Rotate(0, 0, -currZDeg);
+        transform.Rotate(getXDegVector(currXDeg, true), Space.World);
+        transform.Rotate(getZDegVector(currZDeg, true), Space.World);
 
         currXDeg += tempX;
         currZDeg += tempZ;
@@ -114,10 +116,19 @@ public class Tilting : MonoBehaviour {
         Debug.Log("XDeg: " + xDeg + ", ZDeg: " + zDeg);
         Debug.Log(Time.deltaTime);*/
 
-        transform.Rotate(0, 0, currZDeg);
-        transform.Rotate(currXDeg, 0, 0);
+        transform.Rotate(getZDegVector(currZDeg, false), Space.World);
+        transform.Rotate(getXDegVector(currXDeg, false), Space.World);
 
-        return increments - 1; 
+        return increments - 1;
+    }
+
+    public virtual Vector3 getXDegVector(float xDeg, bool reverse)
+    {
+        return new Vector3(reverse ? -xDeg:xDeg, 0, 0);
+    }
+    public virtual Vector3 getZDegVector(float zDeg, bool reverse)
+    {
+        return new Vector3(0, 0, reverse ? -zDeg : zDeg);
     }
 
     /**
@@ -158,5 +169,20 @@ public class Tilting : MonoBehaviour {
     int getINCREMENT_MIN()
     {
         return INCREMENT_MIN;
+    }
+
+    public float getCurrXDeg()
+    {
+        return currXDeg;
+    }
+
+    public float getCurrZDeg()
+    {
+        return currZDeg;
+    }
+
+    public void stopWorking()
+    {
+        stillWorking = false;
     }
 }

@@ -119,7 +119,8 @@ public class Detection : MonoBehaviour
         {
 			if (hit.collider.tag == "EndingTrigger") {
 				Debug.Log ("Quit!");
-				//Application.Quit ();
+                //Application.Quit ();
+                StartCoroutine(GameObject.Find("Tracker").GetComponent<MainTracker>().endDay());
 				Time.timeScale = 0; 
 			} else if (hit.collider.tag == "Stuck Debris") {
 				Destroy (hit.transform.gameObject);

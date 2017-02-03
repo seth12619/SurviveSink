@@ -76,6 +76,7 @@ public class FireAx : ItemPickup {
 
     public override IEnumerator use()
     {
+        StartCoroutine(mainTracker.useStamina(100));
         swinging = true;
         yield return null;
     }

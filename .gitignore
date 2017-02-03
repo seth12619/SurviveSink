@@ -3,6 +3,8 @@
 Survive Sink.sln
 *.info
 
+*.bin
+
  Windows image file caches
 Thumbs.db
 ehthumbs.db
@@ -121,4 +123,13 @@ Temp
 *.csproj
 *.pidb
 *.sln
+<<<<<<< HEAD
 >>>>>>> refs/remotes/origin/master
+=======
+Survive Sink/Assets/Main/MainTest.unity
+>>>>>>> refs/remotes/origin/master
+*.dll
+Survive Sink/Library/ScriptAssemblies/Assembly-UnityScript.dll.mdb
+Survive Sink/Library/metadata/05/0591e42cc4935ba41abad9216d17afbc
+Survive Sink/Library/ScriptAssemblies/Assembly-UnityScript.dll
+Survive Sink/Library/ScriptAssemblies/Assembly-UnityScript.dll
