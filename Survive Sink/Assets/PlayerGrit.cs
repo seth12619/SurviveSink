@@ -4,7 +4,7 @@ using System.Collections;
 
 public class PlayerGrit : MonoBehaviour {
 
-	public int startingGrit = 1000;
+	public int startingGrit = 100;
 	public int currentGrit;
 	public Slider gritslider;
 	public Image damageImage;
@@ -16,6 +16,7 @@ public class PlayerGrit : MonoBehaviour {
 
 	void Awake (){
 		anim = GetComponent <Animator> ();
+
 
 		currentGrit = startingGrit;
 	}
@@ -43,7 +44,7 @@ public class PlayerGrit : MonoBehaviour {
 		damaged = false;
 	}
 
-	void takeDamage (int amounnt)
+	public void takeDamage (int amounnt)
 	{
 		damaged = true;
 
