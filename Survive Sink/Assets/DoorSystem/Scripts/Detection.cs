@@ -38,10 +38,19 @@ public class Detection : MonoBehaviour
 	string TitleTimesMoveable = "TimesMoveable";
 	string TitleRunning = "Running";
 
+	PlayerGrit grit;
+
+
 	//START FUNCTION
 	void Start()
 	{
 
+	}
+
+	//AWAKE
+	void Awake()
+	{
+		grit = GetComponent<PlayerGrit>();
 	}
 
 	//UPDATE FUNCTION
@@ -59,11 +68,12 @@ public class Detection : MonoBehaviour
             //DebugPanel.Log(TitleHitTag, CategoryDoor, hit.collider.tag);
             hitMe = hit;
 
-			if (hit.collider.tag == TriggerTag || hit.collider.tag == "EndingTrigger") {
+			if (hit.collider.tag == TriggerTag || hit.collider.tag == "EndingTrigger" || hit.collider.tag == "Stuck Debris") {
 				InReach = true;
 
 				doAction (hit);
 			} 
+				
 
 			else InReach = false;
 
@@ -112,19 +122,25 @@ public class Detection : MonoBehaviour
                 //Application.Quit ();
                 StartCoroutine(GameObject.Find("Tracker").GetComponent<MainTracker>().endDay());
 				Time.timeScale = 0; 
+			} else if (hit.collider.tag == "Stuck Debris") {
+				Destroy (hit.transform.gameObject);
+				grit.takeDamage (5);
+			} else {
+				// Give the object that was hit the name 'Door'.
+				GameObject Door = hit.transform.gameObject;
+
+				// Get access to the 'DoorOpening' script attached to the door that was hit.
+				Door dooropening = Door.GetComponent<Door> ();
+
+				// Check whether the door is opening/closing or not.
+				if (dooropening.Running == false) {
+					// Open/close the door by running the 'Open' function in the 'DoorOpening' script.
+					StartCoroutine (hit.collider.GetComponent<Door> ().Open ());
+				}
 			}
-            // Give the object that was hit the name 'Door'.
-            GameObject Door = hit.transform.gameObject;
-
-            // Get access to the 'DoorOpening' script attached to the door that was hit.
-            Door dooropening = Door.GetComponent<Door>();
-
-            // Check whether the door is opening/closing or not.
-            if (dooropening.Running == false)
-            {
-                // Open/close the door by running the 'Open' function in the 'DoorOpening' script.
-                StartCoroutine(hit.collider.GetComponent<Door>().Open());
-            }
         }
+
     }
+
+
 }
