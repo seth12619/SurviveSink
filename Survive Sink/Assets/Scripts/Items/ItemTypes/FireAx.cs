@@ -12,6 +12,7 @@ public class FireAx : ItemPickup {
     private bool swinging = false;
 
     private string tagFurn = "Furniture";
+	private string tagDebris = "Debris";
 
     public override void Start()
     {
@@ -51,7 +52,7 @@ public class FireAx : ItemPickup {
             if (currTime > SWING_SPEED)
             {
                 Debug.Log(Det.hitMe.collider.tag);
-                if (Det.hitMe.collider.tag == tagFurn)
+                if ((Det.hitMe.collider.tag == tagFurn)|| (Det.hitMe.collider.tag==tagDebris))
                 {
                     GameObject furn = Det.hitMe.transform.gameObject;
 
@@ -62,8 +63,7 @@ public class FireAx : ItemPickup {
         }
     }
 
-    public IEnumerator stopTrying()
-    {
+    public IEnumerator stopTrying() {
         swinging = false;
         currTime = 0f;
         if (nextToPlayer == 1)

@@ -14,6 +14,7 @@ public class PlayerGrit : MonoBehaviour {
 
 	Animator anim;
 
+
 	void Awake (){
 		anim = GetComponent <Animator> ();
 
@@ -51,5 +52,15 @@ public class PlayerGrit : MonoBehaviour {
 		currentGrit -= amounnt;
 
 		gritslider.value = currentGrit;
+		
+		if(currentGrit <= 0)
+		{
+			death();
+		}
+	}
+	
+	public void death()
+	{
+		StartCoroutine(GameObject.Find("Tracker").GetComponent<MainTracker>().endDay());
 	}
 }

@@ -124,7 +124,7 @@ public class Detection : MonoBehaviour
 				Time.timeScale = 0; 
 			} else if (hit.collider.tag == "Stuck Debris") {
 				Destroy (hit.transform.gameObject);
-				grit.takeDamage (5);
+				grit.takeDamage (20);
 			} else {
 				// Give the object that was hit the name 'Door'.
 				GameObject Door = hit.transform.gameObject;

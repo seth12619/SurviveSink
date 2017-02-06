@@ -4,9 +4,10 @@ using System.Collections;
 public class HitBehavior : MonoBehaviour {
 
 	PlayerGrit grit;
+	Rigidbody rg;
 	// Use this for initialization
 	void Start () {
-	
+		rg = GetComponent<Rigidbody>();
 	}
 	
 	// Update is called once per frame
@@ -19,9 +20,11 @@ public class HitBehavior : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision other){
+		Vec3 velocity = rg.velocity;
+		
 		if (other.gameObject.tag == "Debris") {
 			Debug.Log ("COLLIDING WITH SOMETHING!");
-			grit.takeDamage (3);
+			grit.takeDamage (rg.mass/100);
 		}
 	}
 
