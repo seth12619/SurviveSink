@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour {
 
 	public bool start;
+	public bool oculus;
 	public bool quit;
 
 	// Use this for initialization
@@ -17,6 +18,9 @@ public class MainMenu : MonoBehaviour {
 
 			SceneManager.LoadScene("Main", LoadSceneMode.Single);
 
+		}
+		if (oculus) {
+			SceneManager.LoadScene("MainOculus", LoadSceneMode.Single);
 		}
 		if (quit) {
 			Application.Quit();

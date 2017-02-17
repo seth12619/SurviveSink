@@ -53,6 +53,7 @@
      <Compile Include="Assets\DoorSystem\Scripts\MouseLook.cs" />
      <Compile Include="Assets\DoorSystem\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\HitBehavior.cs" />
+     <Compile Include="Assets\Main\DisplaySetup.cs" />
      <Compile Include="Assets\Main\MainMenu.cs" />
      <Compile Include="Assets\Main\MouseHover.cs" />
      <Compile Include="Assets\OVR\Scripts\OVRBoundary.cs" />
