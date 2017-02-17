@@ -52,6 +52,8 @@
      <Compile Include="Assets\DoorSystem\Scripts\Door.cs" />
      <Compile Include="Assets\DoorSystem\Scripts\MouseLook.cs" />
      <Compile Include="Assets\DoorSystem\Scripts\PlayerMovement.cs" />
+     <Compile Include="Assets\HitBehavior.cs" />
+     <Compile Include="Assets\Main\DisplaySetup.cs" />
      <Compile Include="Assets\Main\MainMenu.cs" />
      <Compile Include="Assets\Main\MouseHover.cs" />
      <Compile Include="Assets\OVR\Scripts\OVRBoundary.cs" />
@@ -96,6 +98,7 @@
      <Compile Include="Assets\PlayerController.cs" />
      <Compile Include="Assets\PlayerGrit.cs" />
      <Compile Include="Assets\Scripts\HUD\ActionTimer.cs" />
+     <Compile Include="Assets\Scripts\HUD\EndReport.cs" />
      <Compile Include="Assets\Scripts\HelpfulScript\WakeUpRigidbody.cs" />
      <Compile Include="Assets\Scripts\Items\Controller\ItemController.cs" />
      <Compile Include="Assets\Scripts\Items\Hands\Hand.cs" />
@@ -105,7 +108,9 @@
      <Compile Include="Assets\Scripts\Items\ItemPickup.cs" />
      <Compile Include="Assets\Scripts\Items\ItemTypes\FireAx.cs" />
      <Compile Include="Assets\Scripts\Items\ItemTypes\LifeJacket.cs" />
+     <Compile Include="Assets\Scripts\Tilting\CameraTilting.cs" />
      <Compile Include="Assets\Scripts\Tilting\Tilting.cs" />
+     <Compile Include="Assets\Scripts\Tilting\TiltingGrav.cs" />
      <Compile Include="Assets\Scripts\Tilting\WaitTilting.cs" />
      <Compile Include="Assets\Scripts\Tracker\MainTracker.cs" />
      <Compile Include="Assets\UnityChan\Scripts\CameraController.cs" />

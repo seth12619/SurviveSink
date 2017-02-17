@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class MainTracker : MonoBehaviour {
@@ -48,6 +49,7 @@ public class MainTracker : MonoBehaviour {
 
     public string report()
     {
+		float a = GameObject.Find("/HUD/GritUI/GritSlider").GetComponent<Slider>().value;
         string rep = "";
         rep += lifeJacketTracker > 0 ? "Wore a life jacket...\n" : "Did not have a life jacket...\n";
         rep += stamina > 700 ? "You feel energized..." : stamina > 300 ? "You feel a little winded..." : "You feel exhausted...";
@@ -57,8 +59,14 @@ public class MainTracker : MonoBehaviour {
         score += lifeJacketTracker > 0 ? 2000 : 0;
         score += stamina;
         score += 1000 - (int)time;
+		rep +=  "\nHealth: " + a.ToString();
         rep += "\nYour Score: ";
         rep += score < 1000 ? "F" : score < 1500 ? "D" : score < 2000 ? "C" : score < 2500 ? "B" : "A";
+		
+		if(a <= 0){
+			rep = "You Died";
+		}
+		
 
         return rep;
     }

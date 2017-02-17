@@ -3,6 +3,8 @@
 Survive Sink.sln
 *.info
 
+*.bin
+
  Windows image file caches
 Thumbs.db
 ehthumbs.db
@@ -84,6 +86,25 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+<<<<<<< HEAD
+Survive Sink/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+Survive Sink/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+Survive Sink/Library/ScriptAssemblies/Assembly-CSharp.dll.mdb
+Survive Sink/Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll.mdb
+Survive Sink/Library/ScriptAssemblies/Assembly-CSharp.dll.mdb
+Survive Sink/Library/ScriptAssemblies/Assembly-CSharp.dll.mdb
+Survive Sink/Library/ScriptAssemblies/Assembly-CSharp.dll
+Survive Sink/Library/assetDatabase3
+Survive Sink/Library/assetDatabase3
+Survive Sink/Library/assetDatabase3
+Survive Sink/Library/assetDatabase3
+Survive Sink/Library/CurrentLayout.dwlt
+Survive Sink/Library/expandedItems
+Survive Sink/Library/metadata/00/00000000000000004000000000000000
+Survive Sink/Library/metadata/00/00000000000000006100000000000000
+*.mdb
+*.dll
+=======
 # Unity3D .gitignore file.
 # Store this file at the root of your local repository.
 .DS_Store
@@ -102,4 +123,13 @@ Temp
 *.csproj
 *.pidb
 *.sln
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/master
+=======
 Survive Sink/Assets/Main/MainTest.unity
+>>>>>>> refs/remotes/origin/master
+*.dll
+Survive Sink/Library/ScriptAssemblies/Assembly-UnityScript.dll.mdb
+Survive Sink/Library/metadata/05/0591e42cc4935ba41abad9216d17afbc
+Survive Sink/Library/ScriptAssemblies/Assembly-UnityScript.dll
+Survive Sink/Library/ScriptAssemblies/Assembly-UnityScript.dll
