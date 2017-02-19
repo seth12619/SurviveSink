@@ -25,8 +25,8 @@ public class LifeJacket : ItemPickup {
         X_DEG_Shift = 126;
         Y_DEG_Shift = 190;
         Z_DEG_Shift = -111;
-        XShift = 0.3f;
-        YShift = -0.1f;
+        XShift = 0.175f;
+        YShift = -0.15f;
         ZShift = 0.2f;
     }
 
