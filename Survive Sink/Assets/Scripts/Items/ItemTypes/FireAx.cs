@@ -22,10 +22,10 @@ public class FireAx : ItemPickup {
 
         pickUpScale = 0.1f;
         X_DEG_Shift = -10;
-        Y_DEG_Shift = 160;
+        Y_DEG_Shift = -80;
         Z_DEG_Shift = -30;
         XShift = 0.175f;
-        YShift = -0.15f;
+        YShift = -0.4f;
         ZShift = 0.2f;
     }
 
