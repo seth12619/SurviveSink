@@ -10,7 +10,7 @@ public class FireAx : ItemPickup {
     private static float ORIG_Z_DEG_Shift = -30;
     private static float SWING_X_DEG_SHIFT = 90;
 
-    private float SWING_SPEED = 1.5f;
+    private float SWING_SPEED = 0.75f;
     private string ACTION = "Swinging Fireaxe";
 
     private float currTime = 0f;
@@ -25,7 +25,7 @@ public class FireAx : ItemPickup {
         player = GameObject.Find("Player");
         Det = player.GetComponent<ItemDetection>();
 
-        pickUpScale = 0.1f;
+        pickUpScale = 0.05f;
         X_DEG_Shift = ORIG_X_DEG_Shift;
         Y_DEG_Shift = ORIG_Y_DEG_Shift;
         Z_DEG_Shift = ORIG_Z_DEG_Shift;
