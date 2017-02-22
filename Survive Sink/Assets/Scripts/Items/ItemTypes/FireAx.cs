@@ -5,7 +5,12 @@ public class FireAx : ItemPickup {
     GameObject player;
     Detection Det;
 
-    private float SWING_SPEED = 1.5f;
+    private static float ORIG_X_DEG_Shift = -10;
+    private static float ORIG_Y_DEG_Shift = -80;
+    private static float ORIG_Z_DEG_Shift = -30;
+    private static float SWING_X_DEG_SHIFT = 90;
+
+    private float SWING_SPEED = 0.75f;
     private string ACTION = "Swinging Fireaxe";
 
     private float currTime = 0f;
@@ -20,10 +25,10 @@ public class FireAx : ItemPickup {
         player = GameObject.Find("Player");
         Det = player.GetComponent<ItemDetection>();
 
-        pickUpScale = 0.1f;
-        X_DEG_Shift = -10;
-        Y_DEG_Shift = -80;
-        Z_DEG_Shift = -30;
+        pickUpScale = 0.05f;
+        X_DEG_Shift = ORIG_X_DEG_Shift;
+        Y_DEG_Shift = ORIG_Y_DEG_Shift;
+        Z_DEG_Shift = ORIG_Z_DEG_Shift;
         XShift = 0.175f;
         YShift = -0.4f;
         ZShift = 0.2f;
@@ -32,6 +37,7 @@ public class FireAx : ItemPickup {
     public override void Update()
     {
         base.Update();
+        X_DEG_Shift = ORIG_X_DEG_Shift + currTime / SWING_SPEED * SWING_X_DEG_SHIFT;
         if (swinging)
         {
             currTime += Time.deltaTime;
