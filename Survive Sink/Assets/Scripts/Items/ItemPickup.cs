@@ -29,7 +29,6 @@ public class ItemPickup : MonoBehaviour
     private int rectYMargin = 20;
 
     new private Rigidbody rigidbody;
-    private MeshRenderer meshRend;
     private float rigidbodyMass;
     protected GameObject Camera;
 
@@ -39,7 +38,7 @@ public class ItemPickup : MonoBehaviour
     protected ActionTimer aT;
 
     protected MainTracker mainTracker;
-    protected MeshRenderer meshRenderer;
+    protected MeshRenderer[] meshRenderers;
 
     // Use this for initialization
     public virtual void Start()
@@ -48,12 +47,11 @@ public class ItemPickup : MonoBehaviour
         aT = temp.GetComponent<ActionTimer>();
 
         rigidbody = GetComponent<Rigidbody>();
-        meshRend = GetComponent<MeshRenderer>();
         rigidbodyMass = rigidbody.mass;
         Camera = GameObject.Find("Camera");
 
         mainTracker = GameObject.Find("Tracker").GetComponent<MainTracker>();
-        meshRenderer = GetComponent<MeshRenderer>();
+        meshRenderers = GetComponentsInChildren<MeshRenderer>(true);
     }
 
     // Update is called once per frame
@@ -94,7 +92,6 @@ public class ItemPickup : MonoBehaviour
 
     void attachToPlayer()
     {
-        meshRend.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
         transform.localScale *= pickUpScale;
 
         transform.rotation = Quaternion.Euler(X_DEG_Shift, Y_DEG_Shift * nextToPlayer, Z_DEG_Shift * nextToPlayer);
@@ -104,18 +101,19 @@ public class ItemPickup : MonoBehaviour
         transform.position = Camera.transform.position + Camera.transform.rotation * new Vector3(XShift * nextToPlayer * pickUpScale, YShift * pickUpScale, ZShift * pickUpScale);
         transform.parent = Camera.transform;
 
-        meshRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+        foreach(MeshRenderer e in meshRenderers)
+            e.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
     }
 
     public IEnumerator detachFromPlayer()
     {
-        meshRend.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+        foreach (MeshRenderer e in meshRenderers)
+            e.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
         rigidbody.isKinematic = false;
         rigidbody.detectCollisions = true;
         transform.parent = null;
         transform.localScale /= pickUpScale;
         nextToPlayer = 0;
-        meshRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
         yield return null;
     }
 
