@@ -39,6 +39,7 @@ public class ItemPickup : MonoBehaviour
     protected ActionTimer aT;
 
     protected MainTracker mainTracker;
+    protected MeshRenderer meshRenderer;
 
     // Use this for initialization
     public virtual void Start()
@@ -52,6 +53,7 @@ public class ItemPickup : MonoBehaviour
         Camera = GameObject.Find("Camera");
 
         mainTracker = GameObject.Find("Tracker").GetComponent<MainTracker>();
+        meshRenderer = GetComponent<MeshRenderer>();
     }
 
     // Update is called once per frame
@@ -59,6 +61,8 @@ public class ItemPickup : MonoBehaviour
     {
         if (nextToPlayer != 0)
         {
+            transform.rotation = Quaternion.Euler(X_DEG_Shift, Y_DEG_Shift * nextToPlayer, Z_DEG_Shift * nextToPlayer);
+            transform.rotation = Camera.transform.rotation * transform.rotation;
         }
         else
         {
@@ -99,6 +103,8 @@ public class ItemPickup : MonoBehaviour
         rigidbody.detectCollisions = false;
         transform.position = Camera.transform.position + Camera.transform.rotation * new Vector3(XShift * nextToPlayer * pickUpScale, YShift * pickUpScale, ZShift * pickUpScale);
         transform.parent = Camera.transform;
+
+        meshRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
     }
 
     public IEnumerator detachFromPlayer()
@@ -109,6 +115,7 @@ public class ItemPickup : MonoBehaviour
         transform.parent = null;
         transform.localScale /= pickUpScale;
         nextToPlayer = 0;
+        meshRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
         yield return null;
     }
 

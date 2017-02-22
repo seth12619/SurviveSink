@@ -45,6 +45,9 @@ public class PlayerGrit : MonoBehaviour {
 		damaged = false;
 	}
 
+    /**
+     * passingDuty of takeDamage as a factor here.
+     */
 	public void takeDamage (int amounnt)
 	{
 		damaged = true;
