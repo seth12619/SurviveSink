@@ -29,7 +29,7 @@ public class FireAx : ItemPickup {
         X_DEG_Shift = ORIG_X_DEG_Shift;
         Y_DEG_Shift = ORIG_Y_DEG_Shift;
         Z_DEG_Shift = ORIG_Z_DEG_Shift;
-        XShift = 0.175f;
+        XShift = 0.1f;
         YShift = -0.4f;
         ZShift = 0.2f;
     }
