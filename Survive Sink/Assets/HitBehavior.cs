@@ -25,7 +25,7 @@ public class HitBehavior : MonoBehaviour {
 		if (other.gameObject.tag == "Debris") {
 			Debug.Log ("COLLIDING WITH SOMETHING!");
 			//grit.takeDamage (rg.mass/100);
-			grit.takeDamage (8);
+			grit.gotHit(other.gameObject);
 		}
 	}
 
