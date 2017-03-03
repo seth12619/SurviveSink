@@ -44,13 +44,6 @@ public class PlayerGrit : MonoBehaviour {
 		// Reset the damaged flag.
 		damaged = false;
 	}
-	
-	public void gotHit(GameObject collidedWith){
-		float magnitude = collidedWith.GetComponent<Rigidbody>().velocity.magnitude;
-		if(magnitude>1.0f){
-			takeDamage(8);
-		}
-	}
 
     /**
      * passingDuty of takeDamage as a factor here.
