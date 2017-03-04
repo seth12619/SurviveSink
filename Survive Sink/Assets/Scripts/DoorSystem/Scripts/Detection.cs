@@ -1,8 +1,3 @@
-////////////////////////////////////
-//Last edited by: Alexander Ameye //
-//on: Wednesday, 11/11/2015          //
-////////////////////////////////////
-
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
@@ -38,7 +33,15 @@ public class Detection : MonoBehaviour
 	string TitleTimesMoveable = "TimesMoveable";
 	string TitleRunning = "Running";
 
-	PlayerGrit grit;
+    MeshRenderer[] oldMeshRenderers;
+    Shader[] oldShaders;
+
+    bool oldInReach = false;
+    RaycastHit oldHit;
+
+    public Shader itemHighlightShader;
+
+    PlayerGrit grit;
 
 
 	//START FUNCTION
@@ -54,7 +57,7 @@ public class Detection : MonoBehaviour
 	}
 
 	//UPDATE FUNCTION
-	void Update()
+	public void Update()
 	{
 		// Set origin of ray to 'center of screen' and direction of ray to 'cameraview'.
 		Ray ray = Camera.main.ViewportPointToRay (new Vector3 (0.5F, 0.5F, 0F));
@@ -82,36 +85,32 @@ public class Detection : MonoBehaviour
 		else
 		{
 			InReach = false;
-
-			//DEBUGGING (DEBUG PANEL)
-			//DebugPanel.Break(TitleHitTag);
 		}
 
-		//DEBUGGING (DEBUG PANEL)
-		//DebugPanel.Log(TitleInReach, CategoryDetection, InReach);
-		//DebugPanel.Log(TitleReach, CategoryDetection, Reach);
+        highlight();
+    }
 
-		/*if (InReach == true)
-		{
-			DebugPanel.Log (TitleHingeSide, CategoryDoor, hit.collider.GetComponent<Door>().HingeSide);
-			DebugPanel.Log (TitleSpeed, CategoryDoor, hit.collider.GetComponent<Door> ().Speed);
-			DebugPanel.Log (TitleTimesMoveable, CategoryDoor, hit.collider.GetComponent<Door> ().TimesMoveable);
-			DebugPanel.Log (TitleCurrentAngle, CategoryDoor, Mathf.Round(hit.transform.eulerAngles.y) + "°");
-			DebugPanel.Log (TitleRunning, CategoryDoor, hit.collider.GetComponent<Door> ().Running);
-		}
-
-		else
-		{
-			DebugPanel.Break (TitleHingeSide);
-			DebugPanel.Break (TitleSpeed);
-			DebugPanel.Break (TitleTimesMoveable);
-			DebugPanel.Break (TitleCurrentAngle);
-			DebugPanel.Break (TitleRunning);
-		}
-
-		// Draw the ray as a colored line for debugging purposes.
-		Debug.DrawRay (ray.origin, ray.direction*Reach, DebugRayColor);*/
-	}
+    private void highlight()
+    {
+        if (!oldInReach && InReach)
+        {
+            changeShaders();
+        }
+        else if (oldInReach)
+        {
+            if (oldHit.transform.gameObject != hitMe.transform.gameObject)
+            {
+                changeBackShaders();
+                if (hitMe.collider.tag == TriggerTag)
+                    changeShaders();
+            }
+            else if (!InReach)
+            {
+                changeBackShaders();
+            }
+        }
+        oldInReach = InReach;
+    }
 
     public virtual void doAction(RaycastHit hit)
     {
@@ -142,5 +141,23 @@ public class Detection : MonoBehaviour
 
     }
 
+    private void changeShaders()
+    {
+        oldHit = hitMe;
+        oldMeshRenderers = oldHit.transform.gameObject.GetComponentsInChildren<MeshRenderer>();
+        oldShaders = new Shader[oldMeshRenderers.Length];
+        for (int i = 0; i != oldMeshRenderers.Length; i++)
+        {
+            oldShaders[i] = oldMeshRenderers[i].material.shader;
+            oldMeshRenderers[i].material.shader = itemHighlightShader;
+        }
+    }
 
+    private void changeBackShaders()
+    {
+        for (int i = 0; i != oldMeshRenderers.Length; i++)
+        {
+            oldMeshRenderers[i].material.shader = oldShaders[i];
+        }
+    }
 }
