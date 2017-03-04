@@ -92,7 +92,8 @@ public class ItemPickup : MonoBehaviour
 
     void attachToPlayer()
     {
-        transform.localScale *= pickUpScale;
+        transform.localScale *= pickUpScale / 10;
+        StartCoroutine(GrowBack());
 
         transform.rotation = Quaternion.Euler(X_DEG_Shift, Y_DEG_Shift * nextToPlayer, Z_DEG_Shift * nextToPlayer);
         transform.rotation = Camera.transform.rotation * transform.rotation;
@@ -105,6 +106,12 @@ public class ItemPickup : MonoBehaviour
             e.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
     }
 
+    IEnumerator GrowBack()
+    {
+        yield return new WaitForSeconds(0.01f);
+        transform.localScale *= 10; 
+    }
+
     public IEnumerator detachFromPlayer()
     {
         foreach (MeshRenderer e in meshRenderers)
@@ -115,19 +122,5 @@ public class ItemPickup : MonoBehaviour
         transform.localScale /= pickUpScale;
         nextToPlayer = 0;
         yield return null;
-    }
-
-    void OnGUI()
-    {
-        // Access InReach variable from raycasting script.
-        GameObject Player = GameObject.Find("Player");
-        Detection detection = Player.GetComponent<ItemDetection>();
-
-        if (detection.InReach == true)
-        {
-            GUI.color = Color.white;
-            GUI.Box(new Rect(rectXMargin, rectYMargin, pickupRectWidth, 25), "Press 'Q' or 'L1' to pick up in your left hand");
-            GUI.Box(new Rect(Screen.width - rectXMargin - pickupRectWidth, rectYMargin, pickupRectWidth, 25), "Press 'R' or 'R1' to pick up in your right hand");
-        }
     }
 }

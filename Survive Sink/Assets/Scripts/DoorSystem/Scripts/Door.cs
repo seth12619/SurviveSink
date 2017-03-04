@@ -198,13 +198,13 @@ public class Door : MonoBehaviour {
 	void OnGUI ()
 	{
 		// Access InReach variable from raycasting script.
-		GameObject Player = GameObject.Find("Player");
+		/*GameObject Player = GameObject.Find("Player");
 		Detection detection = Player.GetComponent<Detection>();
 
 		if (detection.InReach == true)
 		{
 			GUI.color = Color.white;
 			GUI.Box(new Rect(20, 20, 200, 25), "Press 'E' to open/close");
-		}
+		}*/
 	}
 }
