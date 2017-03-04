@@ -57,12 +57,17 @@ public class FireAx : ItemPickup {
             
             if (currTime > SWING_SPEED)
             {
-                Debug.Log(Det.hitMe.collider.tag);
                 if ((Det.hitMe.collider.tag == tagFurn)|| (Det.hitMe.collider.tag==tagDebris))
                 {
                     GameObject furn = Det.hitMe.transform.gameObject;
+                    Destructible destruct = furn.GetComponent<Destructible>();
 
-                    Destroy(furn);
+                    if (destruct != null){
+                        StartCoroutine(destruct.destroyMe());
+                    }
+                    else {
+                        Destroy(furn);
+                    }
                 }
                 StartCoroutine(stopTrying());
             }

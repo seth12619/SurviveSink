@@ -15,18 +15,16 @@ public class ItemDetection : Detection {
     public override void doAction(RaycastHit hit)
     {
         hitMe = hit;
+        GameObject item = hit.transform.gameObject;
+
         if (Input.GetButtonDown("LeftHand"))
         {
-            GameObject item = hit.transform.gameObject;
-
             ItemPickup itemPickedUp = item.GetComponent<ItemPickup>();
 
             StartCoroutine(leftHand.attachToPlayer(itemPickedUp));
 
         } else if (Input.GetButtonDown("RightHand"))
         {
-            GameObject item = hit.transform.gameObject;
-
             ItemPickup itemPickedUp = item.GetComponent<ItemPickup>();
 
             StartCoroutine(rightHand.attachToPlayer(itemPickedUp));
