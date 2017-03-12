@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Main/MainOculus.unity
+- path: Assets/TestScenes/Fire/Fire.unity
   isLoaded: 1
   isActive: 1
