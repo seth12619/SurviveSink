@@ -28,5 +28,12 @@ public class HitBehavior : MonoBehaviour {
 			grit.gotHit(other.gameObject);
 		}
 	}
-
+    
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "UnlitFire")
+        {
+            //grit.fire(other.gameObject);
+        }
+    }
 }

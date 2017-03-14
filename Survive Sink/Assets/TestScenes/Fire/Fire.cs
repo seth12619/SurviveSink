@@ -9,13 +9,17 @@ public class Fire : MonoBehaviour {
 	public float expireTime = 180f;
 	public GameObject fire;
 	public bool onFire = true;
+    public Shader unlitFireShader;
 	Shader[] fireShader;
 	
 	Flammable burn;
 
 	// Use this for initialization
 	void Start () {
-		StartCoroutine(createFire());
+        if (onFire)
+        {
+            StartCoroutine(createFire());
+        }
 		startedWithTime = expireTime;
 		
 		burn = transform.parent.gameObject.GetComponent<Flammable>();
@@ -63,7 +67,7 @@ public class Fire : MonoBehaviour {
 		onFire = false;
 		MeshRenderer[] temp = GetComponentsInChildren<MeshRenderer>(true);
 		foreach(MeshRenderer e in temp)
-			e.material.shader = null;
+			e.material.shader = unlitFireShader;
 		tag = "UnlitFire";
 		yield return null;
 	}
@@ -76,4 +80,13 @@ public class Fire : MonoBehaviour {
 		tag = "Fire";
 		yield return null;
 	}
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "UnlitFire")
+        {
+            Fire x = other.gameObject.GetComponent<Fire>();
+            StartCoroutine(x.startFire());
+        }
+    }
 }

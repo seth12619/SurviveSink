@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FireParticle : DeleteSelf {
 	float PI = 3.141592653589f;
-	public float strength = 1.25f;
+	public float strength = 5f;
 
 	// Use this for initialization
 	void Start () {
@@ -19,12 +19,10 @@ public class FireParticle : DeleteSelf {
 		yield return null;
 	}
 	
-	void OnCollisionEnter(Collision other){
-	//	Vec3 velocity = rg.velocity;
-		Destroy(other.gameObject);
+	void OnTriggerEnter(Collider other){
 		if(other.gameObject.tag == "UnlitFire"){
 			Fire x = other.gameObject.GetComponent<Fire>();
 			StartCoroutine(x.startFire());
 		}
-	}
+    }
 }
