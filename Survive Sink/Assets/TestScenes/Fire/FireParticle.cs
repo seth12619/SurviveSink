@@ -18,4 +18,13 @@ public class FireParticle : DeleteSelf {
 		GetComponent<Rigidbody>().velocity = new Vector3(x, y, z);
 		yield return null;
 	}
+	
+	void OnCollisionEnter(Collision other){
+	//	Vec3 velocity = rg.velocity;
+		Destroy(other.gameObject);
+		if(other.gameObject.tag == "UnlitFire"){
+			Fire x = other.gameObject.GetComponent<Fire>();
+			StartCoroutine(x.startFire());
+		}
+	}
 }

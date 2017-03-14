@@ -22,7 +22,7 @@ public class HitBehavior : MonoBehaviour {
 	void OnCollisionEnter(Collision other){
 	//	Vec3 velocity = rg.velocity;
 		
-		if (other.gameObject.tag == "Debris") {
+		if (other.gameObject.tag == "Debris" || other.gameObject.tag == "Furniture") {
 			Debug.Log ("COLLIDING WITH SOMETHING!");
 			//grit.takeDamage (rg.mass/100);
 			grit.gotHit(other.gameObject);

@@ -5,10 +5,11 @@ using UnityEngine;
 public class Fire : MonoBehaviour {
 	float TimeInterval = 0.25f;
 	float timePassed = 0f;
-	float expireTime = 180f;
 	float startedWithTime;
+	public float expireTime = 180f;
 	public GameObject fire;
 	public bool onFire = true;
+	Shader[] fireShader;
 	
 	Flammable burn;
 
@@ -18,6 +19,16 @@ public class Fire : MonoBehaviour {
 		startedWithTime = expireTime;
 		
 		burn = transform.parent.gameObject.GetComponent<Flammable>();
+		
+		MeshRenderer[] temp = GetComponentsInChildren<MeshRenderer>(true);
+		fireShader = new Shader[temp.Length];
+		for(int i = 0; i!=temp.Length; i++){
+			fireShader[i] = temp[i].material.shader;
+		}
+		
+		if(!onFire){
+			StartCoroutine(stopFire());
+		}
 	}
 	
 	// Update is called once per frame
@@ -45,6 +56,24 @@ public class Fire : MonoBehaviour {
 	
 	IEnumerator createFire(){
 		Instantiate(fire, transform.position, transform.rotation);
+		yield return null;
+	}
+	
+	public IEnumerator stopFire(){
+		onFire = false;
+		MeshRenderer[] temp = GetComponentsInChildren<MeshRenderer>(true);
+		foreach(MeshRenderer e in temp)
+			e.material.shader = null;
+		tag = "UnlitFire";
+		yield return null;
+	}
+	
+	public IEnumerator startFire(){
+		onFire = true;
+		MeshRenderer[] temp = GetComponentsInChildren<MeshRenderer>(true);
+		for(int i = 0; i!=temp.Length; i++)
+			temp[i].material.shader = fireShader[i];
+		tag = "Fire";
 		yield return null;
 	}
 }
