@@ -31,7 +31,7 @@ public class UnityChanControlScriptWithRgidBody : MonoBehaviour
 	public float jumpPower = 3.0f; 
 	// キャラクターコントローラ（カプセルコライダ）の参照
 	private CapsuleCollider col;
-	private Rigidbody rb;
+	public Rigidbody rb;
 	// キャラクターコントローラ（カプセルコライダ）の移動量
 	private Vector3 velocity;
 	// CapsuleColliderで設定されているコライダのHeiht、Centerの初期値を収める変数

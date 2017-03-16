@@ -23,7 +23,6 @@ public class HitBehavior : MonoBehaviour {
 	//	Vec3 velocity = rg.velocity;
 		
 		if (other.gameObject.tag == "Debris" || other.gameObject.tag == "Furniture") {
-			Debug.Log ("COLLIDING WITH SOMETHING!");
 			//grit.takeDamage (rg.mass/100);
 			grit.gotHit(other.gameObject);
 		}
@@ -31,9 +30,9 @@ public class HitBehavior : MonoBehaviour {
     
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "UnlitFire")
+        if(other.gameObject.tag == "Fire")
         {
-            //grit.fire(other.gameObject);
+            grit.fire();
         }
     }
 }
