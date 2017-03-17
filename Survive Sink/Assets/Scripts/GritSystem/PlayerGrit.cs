@@ -19,6 +19,8 @@ public class PlayerGrit : MonoBehaviour {
 
 	public UpAndDown upDown;
 	public UnityChanControlScriptWithRgidBody player;
+	public LeftHand leftHand;
+	public RightHand rightHand;
 
 	void Awake (){
 		anim = GetComponent <Animator> ();
@@ -30,6 +32,8 @@ public class PlayerGrit : MonoBehaviour {
 	void Start () {
 		upDown = GameObject.FindGameObjectWithTag("UpAndDown").GetComponent<UpAndDown>();
 		player = GameObject.FindGameObjectWithTag("Player").GetComponent<UnityChanControlScriptWithRgidBody>();
+		leftHand = GameObject.FindGameObjectWithTag("Player").GetComponent<LeftHand>();
+		rightHand = GameObject.FindGameObjectWithTag("Player").GetComponent<RightHand>();
 	}
 	
 	// Update is called once per frame
@@ -56,7 +60,6 @@ public class PlayerGrit : MonoBehaviour {
 		if(timePassed>invinciTime){
 			float magnitude = collidedWith.GetComponent<Rigidbody>().velocity.magnitude;
 			if(magnitude>1.0f){
-				StartCoroutine(upDown.upAndDown());
 				
 				takeDamage(8);
 			}
@@ -66,7 +69,6 @@ public class PlayerGrit : MonoBehaviour {
 	public void fire(){
 		if(timePassed>invinciTime){
 			player.rb.velocity = -8 * player.rb.velocity;
-			StartCoroutine(upDown.upAndDown());
 				
 			takeDamage(19);
 		}
@@ -78,6 +80,9 @@ public class PlayerGrit : MonoBehaviour {
 	public void takeDamage (int amounnt)
 	{
 		timePassed = 0f;
+		StartCoroutine(upDown.upAndDown());
+		StartCoroutine(leftHand.detachFromPlayer());
+		StartCoroutine(rightHand.detachFromPlayer());
 		
 		damaged = true;
 
