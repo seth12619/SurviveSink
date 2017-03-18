@@ -21,6 +21,8 @@ public class PlayerGrit : MonoBehaviour {
 	public UnityChanControlScriptWithRgidBody player;
 	public LeftHand leftHand;
 	public RightHand rightHand;
+	
+	public MainTracker tracker;
 
 	void Awake (){
 		anim = GetComponent <Animator> ();
@@ -34,26 +36,13 @@ public class PlayerGrit : MonoBehaviour {
 		player = GameObject.FindGameObjectWithTag("Player").GetComponent<UnityChanControlScriptWithRgidBody>();
 		leftHand = GameObject.FindGameObjectWithTag("Player").GetComponent<LeftHand>();
 		rightHand = GameObject.FindGameObjectWithTag("Player").GetComponent<RightHand>();
+		
+		tracker = GameObject.Find("Tracker").GetComponent<MainTracker>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		timePassed += Time.deltaTime;
-		// If the player has just been damaged...
-		if(damaged)
-		{
-			// ... set the colour of the damageImage to the flash colour.
-			damageImage.color = flashColor;
-		}
-		// Otherwise...
-		else
-		{
-			// ... transition the colour back to clear.
-			damageImage.color = Color.Lerp (damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
-		}
-
-		// Reset the damaged flag.
-		damaged = false;
 	}
 	
 	public void gotHit(GameObject collidedWith){
@@ -61,23 +50,21 @@ public class PlayerGrit : MonoBehaviour {
 			float magnitude = collidedWith.GetComponent<Rigidbody>().velocity.magnitude;
 			if(magnitude>1.0f){
 				
-				takeDamage(8);
+				takeDamage(180);
 			}
 		}
 	}
 	
 	public void fire(){
-		if(timePassed>invinciTime){
-			player.rb.velocity = -8 * player.rb.velocity;
-				
-			takeDamage(19);
+		if(timePassed>invinciTime){				
+			takeDamage(250);
 		}
 	}
 	
     /**
      * passingDuty of takeDamage as a factor here.
      */
-	public void takeDamage (int amounnt)
+	public void takeDamage (int amount)
 	{
 		timePassed = 0f;
 		StartCoroutine(upDown.upAndDown());
@@ -85,20 +72,22 @@ public class PlayerGrit : MonoBehaviour {
 		StartCoroutine(rightHand.detachFromPlayer());
 		
 		damaged = true;
-
-		currentGrit -= amounnt;
-
-		gritslider.value = currentGrit;
 		
-		if(currentGrit <= 0)
-		{
+		if(tracker.hasStamina()){
+			StartCoroutine(tracker.useStamina(amount));
+			damageFlash();
+		}else{
 			death();
 		}
 	}
 	
+	public void damageFlash(){
+		return;
+	}
+	
 	public void death()
 	{
-		StartCoroutine(GameObject.Find("Tracker").GetComponent<MainTracker>().endDay());
 		Destroy(GameObject.Find("Ship"));
+		StartCoroutine(tracker.endDay());
 	}
 }

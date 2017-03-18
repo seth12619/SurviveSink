@@ -23,7 +23,6 @@ public class HitBehavior : MonoBehaviour {
 	//	Vec3 velocity = rg.velocity;
 		
 		if (other.gameObject.tag == "Debris" || other.gameObject.tag == "Furniture") {
-			//grit.takeDamage (rg.mass/100);
 			grit.gotHit(other.gameObject);
 		}
 	}

@@ -39,7 +39,6 @@ public class UpAndDown : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log(move);
 		if(move!=0&&move!=1){
 			ucswr.backwardSpeed = 0;
 			ucswr.forwardSpeed = 0;
