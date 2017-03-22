@@ -6,7 +6,7 @@ public class FireAx : ItemPickup {
     Detection Det;
 
     private static float ORIG_X_DEG_Shift = -10;
-    private static float ORIG_Y_DEG_Shift = -80;
+    private static float ORIG_Y_DEG_Shift = -100;
     private static float ORIG_Z_DEG_Shift = -30;
     private static float SWING_X_DEG_SHIFT = 90;
 
@@ -87,7 +87,7 @@ public class FireAx : ItemPickup {
 
     public override IEnumerator use()
     {
-        StartCoroutine(mainTracker.useStamina(100));
+        StartCoroutine(mainTracker.useStamina(80));
         swinging = true;
         yield return null;
     }
