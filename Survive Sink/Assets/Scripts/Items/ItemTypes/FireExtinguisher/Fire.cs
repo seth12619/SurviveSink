@@ -67,8 +67,8 @@ public class Fire : MonoBehaviour
     public IEnumerator stopFire()
     {
         onFire = false;
+		tag = "UnlitFire";
         Destroy(transform.Find("RealFire(Clone)").gameObject);
-        tag = "UnlitFire";
         yield return null;
     }
 
