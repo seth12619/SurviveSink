@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Suite/SuiteRoom - Josh.unity
+- path: Assets/Main/MainOculus-Josh.unity
   isLoaded: 1
   isActive: 1
