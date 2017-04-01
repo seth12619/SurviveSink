@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class MainTracker : MonoBehaviour {
     private int lifeJacketTracker;
@@ -11,6 +12,7 @@ public class MainTracker : MonoBehaviour {
 	void Start () {
         lifeJacketTracker = 0;
         stamina = 1000;
+		DontDestroyOnLoad(this);
 	}
 	
 	// Update is called once per frame
@@ -41,6 +43,10 @@ public class MainTracker : MonoBehaviour {
     {
         return stamina > 0;
     }
+	
+	public int getLifeJacketTracker() {
+		return lifeJacketTracker;
+	}
 
     public int staminaNo()
     {
@@ -49,6 +55,7 @@ public class MainTracker : MonoBehaviour {
 
     public string report()
     {
+		
 		float a = GameObject.Find("/HUD/GritUI/GritSlider").GetComponent<Slider>().value;
         string rep = "";
         rep += lifeJacketTracker > 0 ? "Wore a life jacket...\n" : "Did not have a life jacket...\n";
@@ -66,8 +73,8 @@ public class MainTracker : MonoBehaviour {
 		if(a <= 0){
 			rep = "You Died";
 		}
-		
-
+			
+		SceneManager.LoadScene("EndReport", LoadSceneMode.Single);
         return rep;
     }
 }
