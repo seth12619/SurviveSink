@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using UnityEngine.SceneManagement;
+
 
 public class MainTracker : MonoBehaviour {
     private int lifeJacketTracker;
@@ -74,7 +74,7 @@ public class MainTracker : MonoBehaviour {
 			rep = "You Died";
 		}
 			
-		SceneManager.LoadScene("EndReport", LoadSceneMode.Single);
+		
         return rep;
     }
 }

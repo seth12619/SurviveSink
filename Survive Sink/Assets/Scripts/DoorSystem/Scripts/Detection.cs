@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Detection : MonoBehaviour
 {
@@ -120,6 +121,7 @@ public class Detection : MonoBehaviour
 				Debug.Log ("Quit!");
                 //Application.Quit ();
                 StartCoroutine(GameObject.Find("Tracker").GetComponent<MainTracker>().endDay());
+				SceneManager.LoadScene("EndScene", LoadSceneMode.Single);
 				Time.timeScale = 0; 
 			} else if (hit.collider.tag == "Stuck Debris") {
 				Destroy (hit.transform.gameObject);

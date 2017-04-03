@@ -15,9 +15,7 @@ public class MainMenu : MonoBehaviour {
 
 	void OnMouseUp() {
 		if (start) {
-
 			SceneManager.LoadScene("Main", LoadSceneMode.Single);
-
 		}
 		if (oculus) {
 			SceneManager.LoadScene("MainOculus", LoadSceneMode.Single);
