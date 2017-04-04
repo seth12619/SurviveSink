@@ -29,9 +29,14 @@ public class HitBehavior : MonoBehaviour {
     
     void OnTriggerEnter(Collider other)
     {
+		Debug.Log("TRIGGER");
         if(other.gameObject.tag == "Fire")
         {
             grit.fire();
         }
+		else if(other.gameObject.tag == "InstaDeath") {
+			Debug.Log("I SHOULD DIE NOW");
+			grit.checkDeath();
+		}
     }
 }

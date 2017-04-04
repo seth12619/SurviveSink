@@ -7,6 +7,7 @@ public class MainTracker : MonoBehaviour {
     private int lifeJacketTracker;
     private int stamina;
     private float time = 0;
+	private bool watered = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -25,6 +26,17 @@ public class MainTracker : MonoBehaviour {
         lifeJacketTracker++;
         yield return null;
     }
+	
+	public IEnumerator hasJumped()
+	{
+		watered = true;
+		yield return null;
+	}
+	
+	public bool didJump()
+	{
+		return watered;
+	}
 
     public IEnumerator useStamina(int st)
     {

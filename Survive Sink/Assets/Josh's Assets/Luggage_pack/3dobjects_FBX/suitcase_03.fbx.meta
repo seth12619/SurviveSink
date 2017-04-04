@@ -3,8 +3,21 @@ guid: 6af7c9d3371fc41448b9a524dec75989
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
+    100000: Camera
+    100002: Mesh
+    100004: Mesh 1
+    100006: //RootNode
+    400000: Camera
+    400002: Mesh
+    400004: Mesh 1
+    400006: //RootNode
+    2300000: Mesh
+    2300002: Mesh 1
+    3300000: Mesh
+    3300002: Mesh 1
     4300000: Mesh
     4300002: Mesh
+    11100000: //RootNode
   materials:
     importMaterials: 1
     materialName: 2
@@ -15,6 +28,8 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 

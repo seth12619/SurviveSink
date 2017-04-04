@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerGrit : MonoBehaviour {
 
@@ -61,6 +62,18 @@ public class PlayerGrit : MonoBehaviour {
 		}
 	}
 	
+	public void checkDeath(){
+		if(tracker.getLifeJacketTracker() > 0) {
+			this.GetComponent<Renderer>().material = withLifeVest;
+		}
+		if(tracker.getLifeJacketTracker() < 1) {
+			this.GetComponent<Renderer>().material = noLifeVest;
+		}
+		
+		death();
+	}
+
+	
     /**
      * passingDuty of takeDamage as a factor here.
      */
@@ -88,6 +101,7 @@ public class PlayerGrit : MonoBehaviour {
 	public void death()
 	{
 		Destroy(GameObject.Find("Ship"));
-		StartCoroutine(tracker.endDay());
+		StartCoroutine(GameObject.Find("Tracker").GetComponent<MainTracker>().endDay());
+		SceneManager.LoadScene("EndScene", LoadSceneMode.Single);
 	}
 }
