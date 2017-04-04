@@ -16,7 +16,27 @@ public class PersistentTracker : MonoBehaviour {
 		
 	}
 	
+	public bool water() {
+		return mainTrScript.didJump();
+	}
+	
 	public int getLifeJacketTracker() {
 		return mainTrScript.getLifeJacketTracker();
 	}
+	
+	public int getTime() {
+		return mainTrScript.getTime();
+	}
+	
+	public int getHealth() {
+		return mainTrScript.getHealth();
+	}
+	
+	public int getStamina() {
+		return mainTrScript.staminaNo();
+	}
+	
+	public int getScore() {
+		return mainTrScript.getScore();
+	} 
 }

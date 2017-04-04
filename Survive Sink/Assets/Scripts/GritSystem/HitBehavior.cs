@@ -36,7 +36,8 @@ public class HitBehavior : MonoBehaviour {
         }
 		else if(other.gameObject.tag == "InstaDeath") {
 			Debug.Log("I SHOULD DIE NOW");
-			grit.checkDeath();
+			GameObject.Find("Tracker").GetComponent<MainTracker>().hasJumped();
+			grit.death();
 		}
     }
 }

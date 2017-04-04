@@ -62,16 +62,7 @@ public class PlayerGrit : MonoBehaviour {
 		}
 	}
 	
-	public void checkDeath(){
-		if(tracker.getLifeJacketTracker() > 0) {
-			this.GetComponent<Renderer>().material = withLifeVest;
-		}
-		if(tracker.getLifeJacketTracker() < 1) {
-			this.GetComponent<Renderer>().material = noLifeVest;
-		}
-		
-		death();
-	}
+
 
 	
     /**
