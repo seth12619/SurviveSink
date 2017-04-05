@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class EndReport : MonoBehaviour
 {
@@ -13,9 +14,4 @@ public class EndReport : MonoBehaviour
         yield return null;
     }
 
-    void OnGUI()
-    {
-        if(endTime)
-            GUI.Box(new Rect(0,0,Screen.width, Screen.height), report);
-    }
 }
