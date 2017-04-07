@@ -38,7 +38,7 @@ public class GradeCounter : MonoBehaviour {
 	float delay = 0;
 	// Update is called once per frame
 	void Update () {
-		if (delay > 5.0f) {
+		if (delay < 5.0f) {
 		int a = tracker.getScore();
 	if ((tracker.water() && (tracker.getLifeJacketTracker() > 0)) || !tracker.water()) {
 		if(a < 1000) {

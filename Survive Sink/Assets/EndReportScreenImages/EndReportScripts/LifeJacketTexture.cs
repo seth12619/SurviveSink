@@ -19,7 +19,7 @@ public class LifeJacketTexture : MonoBehaviour {
 	float delay = 0;
 	// Update is called once per frame
 	void Update () {
-		if (delay > 5.0f) {
+		if (delay < 5.0f) {
 		if(tracker.getLifeJacketTracker() > 0) {
 			this.GetComponent<Renderer>().material = withLifeVest;
 		} else {
