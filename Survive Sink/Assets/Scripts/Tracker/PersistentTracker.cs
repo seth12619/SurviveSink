@@ -9,11 +9,15 @@ public class PersistentTracker : MonoBehaviour {
 	void Start () {
 
 		mainTrScript = GameObject.Find("Tracker").GetComponent<MainTracker>();
+		string hey = mainTrScript.report();
+		
+		Debug.Log("hello: " + hey);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		string hey = mainTrScript.report();
+		Debug.Log("hello: " + hey);
 	}
 	
 	public bool water() {

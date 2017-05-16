@@ -24,6 +24,23 @@ public class StaminaCounter : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		float delay = 0;
+	// Update is called once per frame
+
+		if (delay < 10.0f) {
+			PersistentTracker tracker = GameObject.Find("PersistentTrack").GetComponent<PersistentTracker>();
+			int a = tracker.getStamina();
+		if(a < 300) {
+			this.GetComponent<Renderer>().material = exhaust;
+		}
+		if((a > 299) && (a < 701)) {
+			this.GetComponent<Renderer>().material = half;
+		}
+		if(a > 700) {
+			this.GetComponent<Renderer>().material = full;
+		}
+		} else {
+			//do nothing
+		}
 	}
 }

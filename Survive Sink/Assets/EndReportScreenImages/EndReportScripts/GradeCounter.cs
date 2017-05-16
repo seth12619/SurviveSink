@@ -14,6 +14,7 @@ public class GradeCounter : MonoBehaviour {
 	void Start () {	
 	tracker = GameObject.Find("PersistentTrack").GetComponent<PersistentTracker>();
 	int a = tracker.getScore();
+	print(a);
 	if ((tracker.water() && (tracker.getLifeJacketTracker() > 0)) || !tracker.water()) {
 		if(a < 1000) {
 			this.GetComponent<Renderer>().material = F;
@@ -38,8 +39,9 @@ public class GradeCounter : MonoBehaviour {
 	float delay = 0;
 	// Update is called once per frame
 	void Update () {
-		if (delay < 5.0f) {
+		if (delay < 10.0f) {
 		int a = tracker.getScore();
+		print(a);
 	if ((tracker.water() && (tracker.getLifeJacketTracker() > 0)) || !tracker.water()) {
 		if(a < 1000) {
 			this.GetComponent<Renderer>().material = F;

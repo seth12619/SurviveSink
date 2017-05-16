@@ -6,14 +6,22 @@ public class WakeUpRigidbody : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		try {
         rigidbody = GetComponent<Rigidbody>();
+		} catch(MissingComponentException e){
+			//do nothing
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		try {
         if (rigidbody.IsSleeping())
         {
             rigidbody.WakeUp();
         }
+		} catch(MissingComponentException e) {
+			//do nothing
+		}
     }
 }
